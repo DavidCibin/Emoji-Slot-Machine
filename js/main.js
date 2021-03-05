@@ -3,6 +3,12 @@
 
 
 /*------Variables (state)------*/
+let totalPoints = 200
+
+let reel1 = 0
+let reel2 = 5
+let reel3 = 10
+
 
 // Variables might include (board/turn/winner)
 
@@ -17,6 +23,19 @@
 
 /*------Functions------*/
 
+function getPoints() {
+    let points = 0
+    if ((reel1 + reel2 + reel3) < 10) {
+        points -= 5
+    }
+    else {
+        points = (reel1 + reel2 + reel3)
+    }
+    console.log(points)
+}
+
+totalPoints += getPoints() 
+console.log('My total points: ' + getPoints())
 
 // Some functions you might choose to use:
 
