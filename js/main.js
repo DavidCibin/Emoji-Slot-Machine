@@ -9,17 +9,19 @@ const emojis = {
     'g': 50,    //🎰
 }
 console.log(emojis)
-console.log(Object.keys[2]);
+console.log(Object.keys[emojis[1]]);
 /*------Variables (state)------*/
 // Variables might include (board/turn/winner)
-let status = document.getElementById("status")
 let totalPoints = 0
+let reel1 = 6
+let game = false 
 
 
 
 /*------Cached Element References------*/
 // Cached Element References
 const slots = document.querySelectorAll('.reels > div');
+let status = document.getElementById("status")
 console.log(slots)
 // let bet1 = document.getElementById('bet1')
 // let bet2 = document.getElementById('bet2')
@@ -39,10 +41,24 @@ console.log(bet1Click)
 
 
 /*------Functions------*/
-function spinClick(evt) {       //Function to spin the reels and a random number for each reel
-    status.innerHTML = "SPINNING"
-    console.log(evt.target.id)    
+function drawSlot1() {
+	var slot1Value = document.getElementById('slotImage1');
+	var r1 = Math.floor(Math.random() * 9);
+	slot1Value.src = "graphics/" + fruitArray[r1] + ".jpg";
+    console.log(r1)
 }
+// console.log(r1)
+
+
+function spinClick(evt) {       //Function to spin the reels and a random number for each reel
+   if (points > 0) {
+    status.innerHTML = "SPINNING"
+    console.log(reel1)    
+    return reel1 = math.random(7) 
+    console.log(reel1)
+   }
+}
+console.log(reel1)
 
 function bet1Click(evt) {       
     //Function to multiply the bet by 1x(original bet)
@@ -64,34 +80,41 @@ function bet3Click(evt) {
 }
 
 
-function init() {
+function init() {   // Initialization function:
+    
     //Here is how the game will start
     // totalPoints set to 100 for new game
     totalPoints = 100
     // console.log('total points in ' ,totalPoints)
-    status.innerHTML = "SPINNING"
+    
 }
 console.log('total points out ' ,totalPoints)
 
 function getPoints() {
-    let points = 20
+    let points = 0
     if ((reel1 + reel2 + reel3) < 10) {
         points -= 5
+        status.innerHTML = "No Match!"
+        //PLAY LOSE AUDIO?? MAYBE NOT
+    }
+    else if ((reel1 + reel2 + reel3) == 150) {
+        status.innerHTML = "JACKPOT!"
+        //PLAY JACKPOT AUDIO
     }
     else {
         points = (reel1 + reel2 + reel3)
+        status.innerHTML = "You Win!"
+        //PLAY WIN AUDIO
     }
-    console.log(getPoints())
+    // console.log(getPoints())
 }
-console.log(getPoints());
+console.log(getPoints()); //Undefined until I get the points to >> reels
+
 // totalPoints += getPoints() 
 // console.log('My total points: ' + getPoints())
 
 // Some functions you might choose to use:
 
-// Initialization function:
-// Where you set your initial state, setting up 
-// what the board will look like upon loading
 
 // On-Click function:
 // Set up what happens when one of the elements
@@ -104,14 +127,14 @@ console.log(getPoints());
 // variable if so
 
 
-// Render function:
-// Displays the current points
-// on the page, updating the elements to reflect
-// either X or O depending on whose turn it is
-function render() {
-    
-}
 
+
+function render() { // Render function:
+    // Displays the current points
+    // Game over = no points
+    
+
+}
 
 
  init();
