@@ -1,4 +1,5 @@
 /*------Constants------*/
+const spin = new Audio('audio/spin.mp3');
 const audioTest = new Audio('audio/jackpot.wav');
 // const jackpot = new Audio('audio/jackpot.wav');
 const winMatch = new Audio('audio/win.wav');
@@ -67,8 +68,19 @@ console.log('spin click ', toggleAudio)
 // On-Click function:
 // generate random "numbers"
 function spinClick() {       //Function to spin the reels and a random number for each reel
-    return status.innerText = 'SPINNING';
-  
+    let rand1 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
+    reel1 = rand1;
+    let rand2 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
+    reel2 = rand2;
+    let rand3 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
+    reel3 = rand3;
+    spin.play()
+    slot1.innerText = reel1;
+    slot2.innerText = reel2;
+    slot3.innerText = reel3;
+    status.innerText = 'SPINNING';
+
+
 //     if (points > 0) {
 //     status.innerHTML = "SPINNING"
 //     console.log(reel1)    
@@ -90,9 +102,9 @@ function init() {   //Initialization function:
     totalPoints = 100
     points = 20
     render()
-    slot1.src = emojis.c 
-    slot2.src = emojis.d
-    slot3.src = emojis.f
+    slot1.innerText = 0;
+    slot2.innerText = 2;
+    slot3.innerText = 7;
 }
 
 
@@ -123,8 +135,7 @@ function render() { // Render function:
         // win.play();
         
     }
-    else if {
-        ((reel1 + reel2 + reel3) < 10) 
+    else if (lose) {
         totalPoints -= 5;
         if(totalPoints > 0) {
             status.innerText = "SPIN AGAIN";
@@ -160,5 +171,7 @@ function toggleAudio(){  //togle icon works, play/plause needs adjust to all sou
     
 }
 
+spinClick()
+console.log(reel1)  
 
  init();

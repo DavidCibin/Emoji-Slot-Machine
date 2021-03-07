@@ -73,7 +73,7 @@ section.reels {
     display: grid;
     grid-gap: 0vmin;
     margin: 0 auto;
-    grid-template-rows: repeat(1, 40vmin);
+    grid-template-rows: repeat(1, 30vmin);
     grid-template-columns: repeat(3, 25vmin);
     
 }
@@ -91,6 +91,7 @@ div {
 #reel1, #reel2, #reel3 {
     border: 2px solid black;
     margin-bottom: 20px;
+    font-size: 8em;
 }
 
 section.console {
