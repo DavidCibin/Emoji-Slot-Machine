@@ -49,16 +49,16 @@ function spinClick() {
     document.getElementById('spinBtn').style.pointerEvents = 'none' //Block SPIN button for been pressed during spinning
     let currentTime = 0;
     let interval = 250;     //Add interval to get a random number every 0.25 second
-    let maxTime = 4500;      //For a total time of 4.5 seconds
+    let maxTime = 500;      //For a total time of 4.5 seconds
     // console.log('START')
     let slotInterval = setInterval(function () {
         // console.log('Interval ==> ', currentTime)
         if (currentTime < maxTime) {
 
             currentTime += interval
-            reel1 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-            reel2 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-            reel3 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
+            reel1 = Math.floor(Math.random() * (6 - 5 + 1)) + 5;
+            reel2 = Math.floor(Math.random() * (6 - 5 + 1)) + 5;
+            reel3 = Math.floor(Math.random() * (6 - 5 + 1)) + 5;
             // console.log('reeelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
 
             //Assign the emoji to the random number from reel1 using the function findEmoji
@@ -117,18 +117,40 @@ function init() {
 
 // Function to check for matchs and handle points
 function getWinner() {
-   
+
     console.log(reel1, reel2, reel3)
     if (reel1 == reel2 && reel1 == reel3) {
-        if (reel1 == 7 && reel2 == 7 && reel3 == 7) {
+        if (reel1, reel2, reel3 == 6) {
             results = 'jackpot';
         }
         else {
-            results = 'line-combo';
+            if (reel1, reel2, reel3 == 3) {
+                results = 'happy-line';
+            }
+            else if (reel1, reel2, reel3 == 4) {
+                results = 'cash-line';
+            }
+            else if (reel1, reel2, reel3 == 5) {
+                results = 'diamond-line';
+            }
+            else {
+                return;
+            }
         }
     }
-    else if (reel1 == reel2 || reel1 == reel3 || reel2 == reel3) {
-        results = 'winner'
+    // else if (reel1 == reel2 || reel1 == reel3 || reel2 == reel3) {
+    //     results = 'winner'
+    // }
+    else if ((reel1 == reel2 || reel1 == reel3 || reel2 == reel3) == 3 {
+        if (reel1 == 3 || reel2 == 3 || reel3 == 3) {
+            results = 'double-happy'
+        }
+        else if (reel1 == 4 || reel2 == 4 || reel3 == 4) {
+            results = 'double-cash'
+        }
+        else if (reel1 == 5 || reel2 == 5 || reel3 == 5) {
+            results = 'double-diamond'
+        }
     }
     else {
         results = 'loser'
@@ -151,8 +173,35 @@ function render() { // Render function:
     // Displays the current points
     // Game over = no points
     console.log('verify my score:before all', totalPoints)  //verify my score:before all
-    console.log(reel1, reel2, reel3)  //verification for the random numbers
-    
+
+
+    if (results == 'jackpot') {
+        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰ ✰";
+        totalPoints += 150;
+        jackpot.play();
+    }
+
+    else if (results == 'line-combo') {
+        status.innerText = "✰ ✰ ✰ ✰ ✰ LINE COMBO ✰ ✰ ✰ ✰ ✰";
+        totalPoints += 150; // Work on it !?!?!?!?!?!?!?!?!?!?
+        win.play();
+    }
+    else if (results == 'winner') {
+        status.innerText = "✰ ✰ ✰ ✰ ✰ YOU WIN ✰ ✰ ✰ ✰ ✰";
+        totalPoints += 10; // Work on it !?!?!?!?!?!?!?!?!?!?        
+    }
+    else {
+        if (totalPoints > 0) {
+            status.innerText = "✰ ✰ ✰ ✰ ✰ SPIN AGAIN ✰ ✰ ✰ ✰ ✰";
+            totalPoints -= 5;
+        } else {
+            status.innerText = "😭 😭 😭 😭 GAME OVER 😭 😭 😭 😭";
+        }
+        lose.play();
+    }
+
+    // console.log(reel1, reel2, reel3)  //verification for the random numbers
+
 
 
     // Find a better way to account for points inside the getPoints function, to clear the render a little
@@ -168,7 +217,7 @@ function render() { // Render function:
     if (rolledCombo == 150) {
         console.log('verify my score:before jackpot', totalPoints)  //verify my score:before jackpot
         totalPoints += 150;
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰ ✰";
+        // status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰ ✰";
         points.innerText = "150"; //Display points for 1 sec then display totalPoints??
         jackpot.play();
         console.log('verify my score:after jackpot', totalPoints)  //verify my score:after jackpot
@@ -177,7 +226,7 @@ function render() { // Render function:
     else if (winningCombos.includes(rolledCombo)) {
         console.log('verify my score:before win', totalPoints)  //verify my score:before win
         console.log(rolledCombo)
-        points = (reel1 + reel2 + reel3);
+        // points = (reel1 + reel2 + reel3);
         totalPoints += rolledCombo//points
         status.innerText = `YOU WIN! ${rolledCombo}`
         score.innerText = `+${rolledCombo}`; //Display points for 1 sec then display totalPoints??
