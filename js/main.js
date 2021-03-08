@@ -20,6 +20,7 @@ const start = '🎰'
 /*------Variables (state)------*/
 let totalPoints = 0;
 let points = 0;
+let results = null;
 let reel1 = null;
 let reel2 = null;
 let reel3 = null;
@@ -58,8 +59,8 @@ function spinClick() {
             reel1 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
             reel2 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
             reel3 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-            console.log('reeelnums',reel1, reel2, reel3); //debug random numbers
-            
+            // console.log('reeelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
+
             //Assign the emoji to the random number from reel1 using the function findEmoji
             let reel1EmojiObject = findEmoji(reel1);
             slot1.innerText = reel1EmojiObject[0].emoji
@@ -69,7 +70,7 @@ function spinClick() {
             let reel2EmojiObject = findEmoji(reel2);
             slot2.innerText = reel2EmojiObject[0].emoji
             // points += reel2EmojiObject[0].score // will not be used here
-            
+
             //Assign the emoji to the random number from reel3 using the function findEmoji
             let reel3EmojiObject = findEmoji(reel3);
             slot3.innerText = reel3EmojiObject[0].emoji
@@ -77,7 +78,7 @@ function spinClick() {
 
             status.innerText = 'SPINNING';
             score.innerText = totalPoints;
-            spin.play() //inactive while testing
+            // spin.play() //inactive while testing
 
         } else {
             // console.log('END')
@@ -93,15 +94,15 @@ function findEmoji(foundNum) {                              //foundNum is the pa
         return;
     }
     let emojiFound = scoreCard.filter(function (obj) {      //returns(creates) an array from the scoreBoard using the filter method
-        console.log('find emoji??', obj.emojiValue)         //log each emoji value from the scoreBoard
-        return obj.emojiValue === foundNum 
+        // console.log('find emoji??', obj.emojiValue)         //log each emoji value from the scoreBoard
+        return obj.emojiValue === foundNum
     })
-    console.log('emoji found', emojiFound)                  //log each emoji value from the scoreBoard
+    // console.log('emoji found', emojiFound)                  //log each emoji value from the scoreBoard
     return emojiFound;
 }
 
 //Initialization function:
-function init() {   
+function init() {
     //Only start new game when totalPoints = 0
     //Here is how the game will start
     // totalPoints set to 100 for new game
@@ -111,12 +112,31 @@ function init() {
     slot2.innerText = scoreCard[6].emoji;
     slot3.innerText = scoreCard[6].emoji;
     score.innerText = totalPoints
-   
+
 }
 
 // Function to check for matchs and handle points
-function getPoints() {
-    
+function getWinner() {
+   
+    console.log(reel1, reel2, reel3)
+    if (reel1 == reel2 && reel1 == reel3) {
+        if (reel1 == 7 && reel2 == 7 && reel3 == 7) {
+            results = 'jackpot';
+        }
+        else {
+            results = 'line-combo';
+        }
+    }
+    else if (reel1 == reel2 || reel1 == reel3 || reel2 == reel3) {
+        results = 'winner'
+    }
+    else {
+        results = 'loser'
+    }
+
+    console.log(results);
+
+
     /* Find a better way to account for points in here, now doing it in render function
     let roll1 = findEmoji(reel1)    
     let roll2 = findEmoji(reel2)    
@@ -130,17 +150,19 @@ function getPoints() {
 function render() { // Render function:
     // Displays the current points
     // Game over = no points
-    console.log(reel1, reel2, reel3)  //verification for the random numbers
     console.log('verify my score:before all', totalPoints)  //verify my score:before all
+    console.log(reel1, reel2, reel3)  //verification for the random numbers
     
 
+
     // Find a better way to account for points inside the getPoints function, to clear the render a little
-    let roll1 = findEmoji(reel1)    
-    let roll2 = findEmoji(reel2)    
+    let roll1 = findEmoji(reel1)
+    console.log(roll1)
+    let roll2 = findEmoji(reel2)
     let roll3 = findEmoji(reel3)
     let rolledCombo = roll1[0].score + roll2[0].score + roll3[0].score; //get the total from each
-    let winningCombos = [5, 10, 15, 20, 30, 50, 75, 150] 
-    
+    let winningCombos = [5, 10, 15, 20, 30, 50, 75, 150]
+
 
     let points = 0;
     if (rolledCombo == 150) {
@@ -155,7 +177,7 @@ function render() { // Render function:
     else if (winningCombos.includes(rolledCombo)) {
         console.log('verify my score:before win', totalPoints)  //verify my score:before win
         console.log(rolledCombo)
-        // points = (reel1 + reel2 + reel3);
+        points = (reel1 + reel2 + reel3);
         totalPoints += rolledCombo//points
         status.innerText = `YOU WIN! ${rolledCombo}`
         score.innerText = `+${rolledCombo}`; //Display points for 1 sec then display totalPoints??
@@ -176,7 +198,7 @@ function render() { // Render function:
         lose.play();
     }
 
-    getPoints();
+    getWinner();
     // Here we will handle the points, messages for win, lose, jackpot
 
 }
