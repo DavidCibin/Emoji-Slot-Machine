@@ -117,3 +117,7 @@ section.console {
     padding: 0px 0px 0px 0px;
     
 }
+#resetBtn {
+    margin-top: 20px;
+    font-size: 20px;
+}
