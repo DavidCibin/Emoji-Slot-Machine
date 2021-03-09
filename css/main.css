@@ -1,26 +1,7 @@
-/* body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Verdana', cursive;
-    
+@font-face {
+    font-family: 'Segment14'; /*a name to be used later*/
+    src: url(/fonts/Segment14.otf) /*URL to font*/
 }
-main{
-    display: grid;
-	border-radius: 20px 20px 5px 5px;
-	background-color: #babd0c;
-	margin-top: 30px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	padding-left: 15px;
-	padding-right: 15px;
-	justify-content: center;
-    align-items: center;
-    flex-direction: column;
-	width: 750px;
-} */
 
 body {
     height: 100vh;
@@ -29,6 +10,7 @@ body {
     align-items: center;
     flex-direction: column;
     font-family: 'Verdana', cursive;
+    background-image: url(/images/background-responsive.jpg);
     
 }
 main{
@@ -126,23 +108,20 @@ div {
     margin: 0 auto;
     background-color: white;   
     border: 5px goldenrod double;
-    
+    width: 85%;
 }
 #reel1 {
-    
     border-radius: 65px/117px 0px 0px 115px;
 }
 #reel3 {
-    
     border-radius: 65px/0px 115px 115px 0px;
 }
 
 section.console {
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-	border-radius: 5px;
+    border-radius: 5px;
 	text-align: center;
 	color: #FFFFFF;
+    margin-top: 20px;
 	font-size: 30px;
     font-weight: bolder;
     justify-content: center;
@@ -150,14 +129,29 @@ section.console {
     grid-gap: 0vmin;
     grid-template-rows: repeat(1, 10vmin);
     grid-template-columns: repeat(3, 25vmin);
-    
+    border-radius: 65px/0px 0px 95px 95px;
+    border: 5px double goldenrod;
+    background-color: firebrick;
     	
 }
-#audio, #points, #spinBtn {
-    border: 2px solid black;
-    background-color: firebrick;
-    padding: 0px 0px 0px 0px;
-    
+#audio {
+    margin: 15px 82px;
+    background-color: #37474F;
+    border-radius: 14px;
+    border: 5px double;
+}
+#points {
+    margin: 15px;
+    background-color: #37474F;
+    border: 5px double gray;
+    font-size: 40px;
+    font-family: 'Segment14';
+}
+#spinBtn {
+    margin: 15px 50px;
+    background-color: #37474F;
+    border-radius: 14px;
+    border: 5px double;
 }
 #resetBtn {
     margin-top: 20px;
