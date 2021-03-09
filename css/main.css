@@ -185,6 +185,21 @@ section.console:first-child {
     font-size: 20px;
 }
 
+#myDIV {
+    width: 20%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: gray;
+    margin-top: 20px;
+    visibility: collapse;
+    position: absolute;
+    border-radius: 11px;
+    border: 5px double white;
+    box-shadow: 0 0 34px rgb(90, 84, 84);   
+    background-color: rgb(153 153 153);
+    height: 33%;    
+}
+
 
 /* 768px is a common "breakpoint" width for tablets */
 @media only screen and (min-width: 768px) {
@@ -202,3 +217,5 @@ section.console:first-child {
       align-items: flex-start;
       align-items: flex-end;
   }
+
+
