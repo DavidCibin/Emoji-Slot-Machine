@@ -112,9 +112,16 @@ div {
 }
 #reel1 {
     border-radius: 65px/117px 0px 0px 115px;
+    margin-left: -21px;
+    width: 210px;
+}
+#reel2 {
+    width: 224px;
 }
 #reel3 {
     border-radius: 65px/0px 115px 115px 0px;
+    width: 209px;
+    margin-left: 35px;
 }
 
 section.console {
@@ -128,32 +135,70 @@ section.console {
     display: grid;
     grid-gap: 0vmin;
     grid-template-rows: repeat(1, 10vmin);
-    grid-template-columns: repeat(3, 25vmin);
+    grid-template-columns: 16% 16% 34% 34%;
     border-radius: 65px/0px 0px 95px 95px;
     border: 5px double goldenrod;
     background-color: firebrick;
-    	
 }
-#audio {
-    margin: 15px 82px;
+section.console:first-child {
+    justify-content: flex-end;
+}
+
+#info {
+    margin: 15px 24px;
     background-color: #37474F;
     border-radius: 14px;
-    border: 5px double;
+    border: 5px double rgb(173, 169, 169);
+}
+#info img {
+    width: 40px;
+    height: 40px;
+}
+#audio {
+    margin: 15px 0px;
+    background-color: #37474F;
+    border-radius: 14px;
+    border: 5px double rgb(173, 169, 169);
+    margin-left: 48px;
+}
+#audio img {
+    margin: 15px 20px;
+    
 }
 #points {
     margin: 15px;
     background-color: #37474F;
-    border: 5px double gray;
-    font-size: 40px;
+    border: 5px double rgb(173, 169, 169);
+    border-radius: 14px;
+    font-size: 48px;
     font-family: 'Segment14';
+    margin-right: -10px;
 }
 #spinBtn {
     margin: 15px 50px;
     background-color: #37474F;
     border-radius: 14px;
-    border: 5px double;
+    border: 5px double rgb(173, 169, 169);
 }
 #resetBtn {
     margin-top: 20px;
     font-size: 20px;
 }
+
+
+/* 768px is a common "breakpoint" width for tablets */
+@media only screen and (min-width: 768px) {
+    body {
+      /* tablet - two column display */
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: 50px auto 30px;
+      grid-template-areas: 
+        "header header"
+        "side content"
+        "footer footer";
+    }
+  }
+  main {
+      align-items: flex-start;
+      align-items: flex-end;
+  }

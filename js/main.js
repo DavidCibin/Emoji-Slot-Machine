@@ -63,9 +63,9 @@ function spinClick() {
         if (currentTime < maxTime) {
 
             currentTime += interval
-            reel1 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-            reel2 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-            reel3 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
+            reel1 = Math.floor(Math.random() * (6 - 5 + 1)) + 5;
+            reel2 = Math.floor(Math.random() * (6 - 5 + 1)) + 5;
+            reel3 = Math.floor(Math.random() * (6 - 5 + 1)) + 5;
             console.log('reelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
 
             //Assign the emoji to the random number from reel1 using the function findEmoji
@@ -83,7 +83,7 @@ function spinClick() {
             slot3.innerText = reel3EmojiObject[0].emoji
             // points += reel3EmojiObject[0].score // will not be used here
 
-            status.innerText = '✰ ✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰ ✰';
+            status.innerText = '✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰';
             if (sound) {
                 spin.play();
             }
@@ -123,7 +123,7 @@ function init() {
     reel2 = null
     reel3 = null
     results = null
-    status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰ ✰`;
+    status.innerText = `✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰`;
     getWinner();
     render();
     
@@ -222,7 +222,7 @@ function render() { // Render function:
     points = 0;
     console.log('points before', points)
     if (results === 'jackpot') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰ ✰";
+        status.innerText = "✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰";
         points += 150;
         if (sound) {
             jackpot.play();
@@ -230,7 +230,7 @@ function render() { // Render function:
 
     }
     else if (results === 'happy-line') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ HAPPY LINE ✰ ✰ ✰ ✰ ✰ ✰";
+        status.innerText = "✰ ✰ ✰ ✰ ✰ HAPPY LINE ✰ ✰ ✰ ✰ ✰";
         points += 15; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
@@ -238,42 +238,42 @@ function render() { // Render function:
 
     }
     else if (results === 'cash-line') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ CASH LINE ✰ ✰ ✰ ✰ ✰ ✰";
+        status.innerText = "✰ ✰ ✰ ✰ ✰ CASH LINE ✰ ✰ ✰ ✰ ✰";
         points += 30; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
     }
     else if (results === 'diamond-line') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ DIAMOND LINE ✰ ✰ ✰ ✰ ✰ ✰";
+        status.innerText = "✰ ✰ ✰ ✰ ✰ DIAMOND LINE ✰ ✰ ✰ ✰ ✰";
         points += 75; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-happy') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ DOUBLE HAPPY ✰ ✰ ✰ ✰ ✰ ✰";
+        status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE HAPPY ✰ ✰ ✰ ✰ ✰";
         points += 10; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-cash') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ DOUBLE CASH ✰ ✰ ✰ ✰ ✰ ✰";
+        status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE CASH ✰ ✰ ✰ ✰ ✰";
         points += 20; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-diamond') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ DOUBLE DIAMOND ✰ ✰ ✰ ✰ ✰ ✰";
+        status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE DIAMOND ✰ ✰ ✰ ✰ ✰";
         points += 50; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
     }
     else if (results === 'single-happy') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ BE HAPPY ✰ ✰ ✰ ✰ ✰ ✰";
+        status.innerText = "✰ ✰ ✰ ✰ ✰ BE HAPPY ✰ ✰ ✰ ✰ ✰";
         points += 5; // Work on it !?!?!?!?!?!?!?!?!?!?        
     }
     else {
@@ -281,7 +281,7 @@ function render() { // Render function:
             return;
         }
         if (totalPoints > 0) {
-            status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ SPIN AGAIN ✰ ✰ ✰ ✰ ✰ ✰";
+            status.innerText = "✰ ✰ ✰ ✰ ✰ SPIN AGAIN ✰ ✰ ✰ ✰ ✰";
         } else {
             status.innerText = "😭 😭 😭 😭 GAME OVER 😭 😭 😭 😭";
             newGame.innerText = 'PLAY'
