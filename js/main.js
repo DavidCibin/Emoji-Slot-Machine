@@ -34,6 +34,7 @@ const slot3 = document.getElementById('reel3');
 let score = document.getElementById('points');
 let status = document.getElementById('status')
 let audio = document.getElementById('audio');
+let newGame = document.getElementById('spinBtn');
 
 
 /*------Event Listeners------*/
@@ -83,7 +84,6 @@ function spinClick() {
             // points += reel3EmojiObject[0].score // will not be used here
 
             status.innerText = 'SPINNING';
-            // score.innerText = totalPoints;
             if (sound) {
                 spin.play();
             }
@@ -114,7 +114,7 @@ function init() {
     //Only start new game when totalPoints = 0
     //Here is how the game will start
     // totalPoints set to 100 for new game
-    totalPoints = 100
+    totalPoints = 5
     slot1.innerText = scoreCard[6].emoji;
     slot2.innerText = scoreCard[6].emoji;
     slot3.innerText = scoreCard[6].emoji;
@@ -126,9 +126,7 @@ function init() {
     status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰ ✰`;
     getWinner();
     render();
-    // score.innerText = 100
-
-
+    
 }
 
 // Function to check for matchs and handle points
@@ -200,7 +198,7 @@ function getWinner() {
 
     }
     else {
-        results = 'lose'
+        return
     }
 
     console.log(reel1, reel2, reel3, results);
@@ -222,10 +220,10 @@ function render() { // Render function:
     getWinner();
     console.log('verify my score:before all', totalPoints)  //verify my score:before all
     points = 0;
-
+    console.log('points before', points)
     if (results === 'jackpot') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰";
-        totalPoints += 150;
+        points += 150;
         if (sound) {
             jackpot.play();
         }
@@ -233,7 +231,7 @@ function render() { // Render function:
     }
     else if (results === 'happy-line') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ HAPPY LINE ✰ ✰ ✰ ✰ ✰";
-        totalPoints += 15; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 15; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
@@ -241,42 +239,42 @@ function render() { // Render function:
     }
     else if (results === 'cash-line') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ CASH LINE ✰ ✰ ✰ ✰ ✰";
-        totalPoints += 30; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 30; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
     }
     else if (results === 'diamond-line') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ DIAMOND LINE ✰ ✰ ✰ ✰ ✰";
-        totalPoints += 75; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 75; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-happy') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE HAPPY ✰ ✰ ✰ ✰ ✰";
-        totalPoints += 10; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 10; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-cash') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE CASH ✰ ✰ ✰ ✰ ✰";
-        totalPoints += 20; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 20; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-diamond') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE DIAMOND ✰ ✰ ✰ ✰ ✰";
-        totalPoints += 50; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 50; // Work on it !?!?!?!?!?!?!?!?!?!?
         if (sound) {
             win.play();
         }
     }
     else if (results === 'single-happy') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ BE HAPPY ✰ ✰ ✰ ✰ ✰";
-        totalPoints += 5; // Work on it !?!?!?!?!?!?!?!?!?!?        
+        points += 5; // Work on it !?!?!?!?!?!?!?!?!?!?        
     }
     else {
         if (reel1 === null) {
@@ -286,70 +284,31 @@ function render() { // Render function:
             status.innerText = "✰ ✰ ✰ ✰ ✰ SPIN AGAIN ✰ ✰ ✰ ✰ ✰";
         } else {
             status.innerText = "😭 😭 😭 😭 GAME OVER 😭 😭 😭 😭";
+            newGame.innerText = 'PLAY'
+            totalPoints = 100;
         }
         if (sound) {
             lose.play();
         }
     }
-    score.innerText = totalPoints
-    // setTimeout(() => {
-    //     score.innerText = totalPoints
-    //     console.log(totalPoints)
-    // }, 2000);
-
+    console.log('points after', points)  //verify my score:before all
+    totalPoints += points 
+    if (points > 0) {
+        score.innerText = `+${points}`
+    }
+    // score.innerText = points
+    
+    setTimeout(() => {
+        score.innerText = totalPoints
+        console.log(totalPoints)
+    }, 2000);
 
     console.log('verify my score:after all', totalPoints)  //verify my score:after all
     console.log('spin result', reel1, reel2, reel3)  //verification for the random numbers
 }
 
-// OLDER VERSION OF RENDER FUNCTION
-// // Find a better way to account for points inside the getPoints function, to clear the render a little
-// let roll1 = findEmoji(reel1)
-// console.log(roll1)
-// let roll2 = findEmoji(reel2)
-// let roll3 = findEmoji(reel3)
-// let rolledCombo = roll1[0].score + roll2[0].score + roll3[0].score; //get the total from each
-// let winningCombos = [5, 10, 15, 20, 30, 50, 75, 150]
-
-
-// let points = 0;
-// if (rolledCombo == 150) {
-//     console.log('verify my score:before jackpot', totalPoints)  //verify my score:before jackpot
-//     totalPoints += 150;
-//     // status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰ ✰";
-//     points.innerText = "150"; //Display points for 1 sec then display totalPoints??
-//     jackpot.play();
-//     console.log('verify my score:after jackpot', totalPoints)  //verify my score:after jackpot
-
-// }
-// else if (winningCombos.includes(rolledCombo)) {
-//     console.log('verify my score:before win', totalPoints)  //verify my score:before win
-//     console.log(rolledCombo)
-//     // points = (reel1 + reel2 + reel3);
-//     totalPoints += rolledCombo//points
-//     status.innerText = `YOU WIN! ${rolledCombo}`
-//     score.innerText = `+${rolledCombo}`; //Display points for 1 sec then display totalPoints??
-//     win.play();
-//     console.log('verify my score:after win', totalPoints)  //verify my score:after win
-
-// }
-// else {
-//     console.log('verify my score:before lose', totalPoints)  //verify my score:before lose
-//     totalPoints -= 5;
-//     console.log('verify my score:after lose', totalPoints)  //verify my score:after lose
-//     if (totalPoints > 0) {
-//         status.innerText = "SPIN AGAIN";
-//         score.innerText = '-5'; //Display points for 1 sec then display totalPoints??
-//     } else {
-//         status.innerText = "😭 GAME OVER 😭";
-//     }
-//     lose.play();
-// }
-
-
-
 //Function for audio effects. Toggle on/off
-function toggleAudio() {  //toggle icon works, play/plause needs adjust to all sounds
+function toggleAudio() {
     if (!sound) {
         sound = true;
         audio.innerHTML = '<img src="images/audioOn.png">';
@@ -362,7 +321,6 @@ function toggleAudio() {  //toggle icon works, play/plause needs adjust to all s
         jackpot.pause();
         audio.innerHTML = '<img src="images/audioOff.png">';
     }
-
 }
 
 init();
