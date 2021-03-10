@@ -13,9 +13,6 @@ const scoreCard = [
     { emojiValue: 5, emoji: '💎', score: 25 },
     { emojiValue: 6, emoji: '🎰', score: 50 },
 ]
-const start = '🎰'
-
-
 
 /*------Variables (state)------*/
 let totalPoints = 0;
@@ -23,9 +20,7 @@ let results = null;
 let reel1 = null;
 let reel2 = null;
 let reel3 = null;
-let match = null
 let sound = true;
-
 
 /*------Cached Element References------*/
 const slot1 = document.getElementById('reel1');
@@ -34,79 +29,74 @@ const slot3 = document.getElementById('reel3');
 let score = document.getElementById('points');
 let status = document.getElementById('status')
 let audio = document.getElementById('audio');
-let newGame = document.getElementById('spinBtn');
-let x = document.getElementById("myDIV");
+let infoMenu = document.getElementById("payout");
 
+let newGame = document.getElementById('spinBtn');
 
 /*------Event Listeners------*/
 document.getElementById('spinBtn').addEventListener('click', spinClick);
 document.getElementById('audio').addEventListener('click', toggleAudio);
-document.getElementById('resetBtn').addEventListener('click', init) //When the game is over
+document.getElementById('info').addEventListener('click', infoPayout);
 
-
-
-let payout = document.getElementById('info').addEventListener('click', myFunction);
+// document.getElementById('resetBtn').addEventListener('click', init) //When the game is over
 
 
 /*------Functions------*/
-//Function to spin the reels and a random number for each reel
 function spinClick() {
-    // document.getElementById('spinBtn').style.
 
     if (totalPoints === 0) {
         init()
     }
     else {
 
-    totalPoints -= 5
-    score.innerText = -5
-    setTimeout(() => {
-        score.innerText = totalPoints
-        console.log(totalPoints)
-    }, 2000);
-    pointerEvents = 'none' //Block SPIN button for been pressed during spinning
-    let currentTime = 0;
-    let interval = 250;     //Add interval to get a random number every 0.25 second
-    let maxTime = 4500;      //For a total time of 4.5 seconds
-    // console.log('START')
-    let slotInterval = setInterval(function () {
-        // console.log('Interval ==> ', currentTime)
-        if (currentTime < maxTime) {
+        totalPoints -= 5
+        score.innerText = -5
+        setTimeout(() => {
+            score.innerText = totalPoints
+            console.log(totalPoints)
+        }, 2000);
+        document.getElementById('spinBtn').style.pointerEvents = 'none' //Block SPIN button for been pressed during spinning
+        let currentTime = 0;
+        let interval = 250;     //Add interval to get a random number every 0.25 second
+        let maxTime = 4500;      //For a total time of 4.5 seconds
+        // console.log('START')
+        let slotInterval = setInterval(function () {
+            // console.log('Interval ==> ', currentTime)
+            if (currentTime < maxTime) {
+                currentTime += interval
+                reel1 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
+                reel2 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
+                reel3 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
+                console.log('reelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
 
-            currentTime += interval
-            reel1 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-            reel2 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-            reel3 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-            console.log('reelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
+                //Assign the emoji to the random number from reel1 using the function findEmoji
+                let reel1EmojiObject = findEmoji(reel1);
+                slot1.innerText = reel1EmojiObject[0].emoji
+                // points += reel1EmojiObject[0].score // will not be used here
 
-            //Assign the emoji to the random number from reel1 using the function findEmoji
-            let reel1EmojiObject = findEmoji(reel1);
-            slot1.innerText = reel1EmojiObject[0].emoji
-            // points += reel1EmojiObject[0].score // will not be used here
+                //Assign the emoji to the random number from reel2 using the function findEmoji
+                let reel2EmojiObject = findEmoji(reel2);
+                slot2.innerText = reel2EmojiObject[0].emoji
+                // points += reel2EmojiObject[0].score // will not be used here
 
-            //Assign the emoji to the random number from reel2 using the function findEmoji
-            let reel2EmojiObject = findEmoji(reel2);
-            slot2.innerText = reel2EmojiObject[0].emoji
-            // points += reel2EmojiObject[0].score // will not be used here
+                //Assign the emoji to the random number from reel3 using the function findEmoji
+                let reel3EmojiObject = findEmoji(reel3);
+                slot3.innerText = reel3EmojiObject[0].emoji
+                // points += reel3EmojiObject[0].score // will not be used here
 
-            //Assign the emoji to the random number from reel3 using the function findEmoji
-            let reel3EmojiObject = findEmoji(reel3);
-            slot3.innerText = reel3EmojiObject[0].emoji
-            // points += reel3EmojiObject[0].score // will not be used here
+                status.innerText = '✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰';
+                if (sound) {
+                    spin.play();
+                }
 
-            status.innerText = '✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰';
-            if (sound) {
-                spin.play();
+            } else {
+                // console.log('END')
+                document.getElementById('spinBtn').style.pointerEvents = 'auto' //Enable SPIN button back after spinning
+                clearInterval(slotInterval)
+                render()
             }
-
-        } else {
-            // console.log('END')
-            document.getElementById('spinBtn').style.pointerEvents = 'auto' //Enable SPIN button back after spinning
-            clearInterval(slotInterval)
-            render()
-        }
-    }, interval)
-}
+        }, interval)
+    }
 }
 
 function findEmoji(foundNum) {                              //foundNum is the parameter that correspond to each random reel
@@ -123,24 +113,20 @@ function findEmoji(foundNum) {                              //foundNum is the pa
 
 //Initialization function:
 function init() {
-    //Only start new game when totalPoints = 0
-    //Here is how the game will start
-    // totalPoints set to 100 for new game
-    totalPoints = 100
-    slot1.innerText = scoreCard[6].emoji;
-    slot2.innerText = scoreCard[6].emoji;
-    slot3.innerText = scoreCard[6].emoji;
-    score.innerText = totalPoints
     reel1 = null
     reel2 = null
     reel3 = null
     results = null
+    totalPoints = 100
+    slot1.innerText = scoreCard[6].emoji;
+    slot2.innerText = scoreCard[6].emoji;
+    slot3.innerText = scoreCard[6].emoji;
+    score.innerText = totalPoints;
     status.innerText = `✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰`;
-    x.style.visibility = 'collapse';
-    newGame.innerText = 'SPIN'
+    infoMenu.style.visibility = 'collapse';
+    newGame.innerText = 'SPIN';
     getWinner();
     render();
-    
 }
 
 // Function to check for matchs and handle points
@@ -162,7 +148,6 @@ function getWinner() {
             }
             else if (reel1, reel2, reel3 === 5) {
                 results = 'diamond-line';
-                
             }
             else {
                 return;
@@ -209,28 +194,16 @@ function getWinner() {
     }
     else if (reel1 === 3 || reel2 === 3 || reel3 === 3) {
         results = 'single-happy'
-
     }
     else {
         return
     }
 
     console.log(reel1, reel2, reel3, results);
-
-
-    /* Find a better way to account for points in here, now doing it in render function
-    let roll1 = findEmoji(reel1)    
-    let roll2 = findEmoji(reel2)    
-    let roll3 = findEmoji(reel3)
-    let rolledCombo = roll1[0].score + roll2[0].score + roll3[0].score; //get the total from each
-    let winningCombos = [5, 10, 15, 20, 30, 50, 75, 150] 
-    */
 }
 
-
-function render() { // Render function:
-    // Displays the current points
-    // Game over = no points
+// Render function:
+function render() {
     getWinner();
     console.log('verify my score:before all', totalPoints)  //verify my score:before all
     points = 0;
@@ -241,7 +214,6 @@ function render() { // Render function:
         if (sound) {
             jackpot.play();
         }
-
     }
     else if (results === 'happy-line') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ HAPPY LINE ✰ ✰ ✰ ✰ ✰";
@@ -249,7 +221,6 @@ function render() { // Render function:
         if (sound) {
             win.play();
         }
-
     }
     else if (results === 'cash-line') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ CASH LINE ✰ ✰ ✰ ✰ ✰";
@@ -299,19 +270,16 @@ function render() { // Render function:
         } else {
             status.innerText = "😭 😭 😭 😭 GAME OVER 😭 😭 😭 😭";
             newGame.innerText = 'PLAY'
-            
         }
         if (sound) {
             lose.play();
         }
     }
     console.log('points after', points)  //verify my score:before all
-    totalPoints += points 
+    totalPoints += points
     if (points > 0) {
         score.innerText = `+${points}`
     }
-    // score.innerText = points
-    
     setTimeout(() => {
         score.innerText = totalPoints
         console.log(totalPoints)
@@ -337,13 +305,13 @@ function toggleAudio() {
     }
 }
 
-function myFunction() {
-    
-    if (x.style.visibility === "collapse") {
-      x.style.visibility = "unset";
+function infoPayout() {
+
+    if (infoMenu.style.visibility === "collapse") {
+        infoMenu.style.visibility = "unset";
     } else {
-      x.style.visibility = "collapse";
+        infoMenu.style.visibility = "collapse";
     }
-  }
+}
 
 init();

@@ -70,7 +70,7 @@ section#status{
 	padding-bottom: 25px;
 	border-radius: 45px/95px 95px 2px 2px;
 	text-align: center;
-	background-color: #37474F;
+	background-color: #4c1a4c;
 	color: #FFFFFF;
 	font-size: 30px;
     font-weight: bolder;
@@ -138,7 +138,7 @@ section.console {
     grid-template-columns: 16% 16% 34% 34%;
     border-radius: 65px/0px 0px 95px 95px;
     border: 5px double goldenrod;
-    background-color: firebrick;
+    background-color: #4c1a4c;
 }
 section.console:first-child {
     justify-content: flex-end;
@@ -146,9 +146,13 @@ section.console:first-child {
 
 #info {
     margin: 15px 24px;
-    background-color: #37474F;
+    background-color: #ef1010;
     border-radius: 14px;
     border: 5px double rgb(173, 169, 169);
+    background-image: url(/images/info.png);
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: center;
 }
 #info img {
     width: 40px;
@@ -156,14 +160,13 @@ section.console:first-child {
 }
 #audio {
     margin: 15px 0px;
-    background-color: #37474F;
+    background-color: #ef1010;
     border-radius: 14px;
     border: 5px double rgb(173, 169, 169);
     margin-left: 48px;
 }
 #audio img {
-    margin: 15px 20px;
-    
+    margin: 15px 20px;    
 }
 #points {
     margin: 15px;
@@ -176,7 +179,7 @@ section.console:first-child {
 }
 #spinBtn {
     margin: 15px 50px;
-    background-color: #37474F;
+    background-color: #ef1010;
     border-radius: 14px;
     border: 5px double rgb(173, 169, 169);
 }
@@ -185,7 +188,7 @@ section.console:first-child {
     font-size: 20px;
 }
 
-#myDIV {
+#payout {
     width: 20%;
     padding: 50px 0;
     text-align: center;
@@ -198,6 +201,10 @@ section.console:first-child {
     box-shadow: 0 0 34px rgb(90, 84, 84);   
     background-color: rgb(153 153 153);
     height: 33%;    
+    background-image: url(/images/payout.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 500px;
 }
 
 
