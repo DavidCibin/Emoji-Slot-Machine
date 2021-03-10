@@ -5,14 +5,15 @@ const win = new Audio('audio/win.wav');
 const lose = new Audio('audio/lose.wav');
 
 const scoreCard = [
-    { emojiValue: 0, emoji: '😱', score: 0 },
-    { emojiValue: 1, emoji: '😭', score: 0 },
-    { emojiValue: 2, emoji: '😠', score: 0 },
-    { emojiValue: 3, emoji: '😃', score: 5 },
-    { emojiValue: 4, emoji: '🤑', score: 10 },
-    { emojiValue: 5, emoji: '💎', score: 25 },
-    { emojiValue: 6, emoji: '🎰', score: 50 },
+    { emojiValue: 0, emoji: '😱' },
+    { emojiValue: 1, emoji: '😭', },
+    { emojiValue: 2, emoji: '😠', },
+    { emojiValue: 3, emoji: '😃', },
+    { emojiValue: 4, emoji: '🤑', },
+    { emojiValue: 5, emoji: '💎', },
+    { emojiValue: 6, emoji: '🎰', },
 ]
+
 
 /*------Variables (state)------*/
 let totalPoints = 0;
@@ -21,6 +22,10 @@ let reel1 = null;
 let reel2 = null;
 let reel3 = null;
 let sound = true;
+let reel1EmojiObject = null;
+let reel2EmojiObject = null;
+let reel3EmojiObject = null
+
 
 /*------Cached Element References------*/
 const slot1 = document.getElementById('reel1');
@@ -29,31 +34,28 @@ const slot3 = document.getElementById('reel3');
 let score = document.getElementById('points');
 let status = document.getElementById('status')
 let audio = document.getElementById('audio');
+let newGame = document.getElementById('spinBtn');
 let infoMenu = document.getElementById("payout");
 
-let newGame = document.getElementById('spinBtn');
 
 /*------Event Listeners------*/
 document.getElementById('spinBtn').addEventListener('click', spinClick);
 document.getElementById('audio').addEventListener('click', toggleAudio);
 document.getElementById('info').addEventListener('click', infoPayout);
 
-// document.getElementById('resetBtn').addEventListener('click', init) //When the game is over
-
 
 /*------Functions------*/
+//Spins the reels generating random numbers and assign each number to a predefined emoji scoreboard
 function spinClick() {
 
     if (totalPoints === 0) {
         init()
     }
     else {
-
         totalPoints -= 5
         score.innerText = -5
         setTimeout(() => {
             score.innerText = totalPoints
-            console.log(totalPoints)
         }, 2000);
         document.getElementById('spinBtn').style.pointerEvents = 'none' //Block SPIN button for been pressed during spinning
         let currentTime = 0;
@@ -69,26 +71,18 @@ function spinClick() {
                 reel3 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
                 console.log('reelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
 
-                //Assign the emoji to the random number from reel1 using the function findEmoji
-                let reel1EmojiObject = findEmoji(reel1);
+                //Assign the emojis to the random number from reel1, reel2, reel3 using the function findEmoji
+                reel1EmojiObject = findEmoji(reel1);
                 slot1.innerText = reel1EmojiObject[0].emoji
-                // points += reel1EmojiObject[0].score // will not be used here
-
-                //Assign the emoji to the random number from reel2 using the function findEmoji
-                let reel2EmojiObject = findEmoji(reel2);
+                reel2EmojiObject = findEmoji(reel2);
                 slot2.innerText = reel2EmojiObject[0].emoji
-                // points += reel2EmojiObject[0].score // will not be used here
-
-                //Assign the emoji to the random number from reel3 using the function findEmoji
-                let reel3EmojiObject = findEmoji(reel3);
+                reel3EmojiObject = findEmoji(reel3);
                 slot3.innerText = reel3EmojiObject[0].emoji
-                // points += reel3EmojiObject[0].score // will not be used here
 
                 status.innerText = '✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰';
                 if (sound) {
                     spin.play();
                 }
-
             } else {
                 // console.log('END')
                 document.getElementById('spinBtn').style.pointerEvents = 'auto' //Enable SPIN button back after spinning
@@ -98,6 +92,7 @@ function spinClick() {
         }, interval)
     }
 }
+
 
 function findEmoji(foundNum) {                              //foundNum is the parameter that correspond to each random reel
     if (foundNum === null) {
@@ -117,7 +112,7 @@ function init() {
     reel2 = null
     reel3 = null
     results = null
-    totalPoints = 100
+    totalPoints = 50
     slot1.innerText = scoreCard[6].emoji;
     slot2.innerText = scoreCard[6].emoji;
     slot3.innerText = scoreCard[6].emoji;
@@ -132,8 +127,6 @@ function init() {
 // Function to check for matchs and handle points
 function getWinner() {
     results = null;
-    console.log(reel1, reel2, reel3, results)
-
     if (reel1 === reel2 && reel1 === reel3 && reel2 === reel3) {
         if (reel1, reel2, reel3 === 6) {
             results = 'jackpot';
@@ -198,68 +191,67 @@ function getWinner() {
     else {
         return
     }
-
-    console.log(reel1, reel2, reel3, results);
+    console.log('spin result', reel1, reel2, reel3, results)  //Verify random numbers, check combos found
 }
 
 // Render function:
 function render() {
     getWinner();
-    console.log('verify my score:before all', totalPoints)  //verify my score:before all
+    console.log('verify my score:before all', totalPoints)  //verify score:before all
     points = 0;
     console.log('points before', points)
     if (results === 'jackpot') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰";
-        points += 150;
+        points += 100;
         if (sound) {
             jackpot.play();
         }
     }
     else if (results === 'happy-line') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ HAPPY LINE ✰ ✰ ✰ ✰ ✰";
-        points += 15; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 15;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'cash-line') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ CASH LINE ✰ ✰ ✰ ✰ ✰";
-        points += 30; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 30;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'diamond-line') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ DIAMOND LINE ✰ ✰ ✰ ✰ ✰";
-        points += 75; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 50;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-happy') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE HAPPY ✰ ✰ ✰ ✰ ✰";
-        points += 10; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 10;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-cash') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE CASH ✰ ✰ ✰ ✰ ✰";
-        points += 20; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 20;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-diamond') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE DIAMOND ✰ ✰ ✰ ✰ ✰";
-        points += 50; // Work on it !?!?!?!?!?!?!?!?!?!?
+        points += 40;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'single-happy') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ BE HAPPY ✰ ✰ ✰ ✰ ✰";
-        points += 5; // Work on it !?!?!?!?!?!?!?!?!?!?        
+        points += 5;
     }
     else {
         if (reel1 === null) {
@@ -275,7 +267,7 @@ function render() {
             lose.play();
         }
     }
-    console.log('points after', points)  //verify my score:before all
+    console.log('points after', points)  //verify score:before all
     totalPoints += points
     if (points > 0) {
         score.innerText = `+${points}`
@@ -285,8 +277,7 @@ function render() {
         console.log(totalPoints)
     }, 2000);
 
-    console.log('verify my score:after all', totalPoints)  //verify my score:after all
-    console.log('spin result', reel1, reel2, reel3)  //verification for the random numbers
+    console.log('verify my score:after all', totalPoints)  //verify score:after all
 }
 
 //Function for audio effects. Toggle on/off
@@ -305,8 +296,8 @@ function toggleAudio() {
     }
 }
 
+//Function for the info button - display the payout
 function infoPayout() {
-
     if (infoMenu.style.visibility === "collapse") {
         infoMenu.style.visibility = "unset";
     } else {
