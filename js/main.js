@@ -48,7 +48,6 @@ document.getElementById('info').addEventListener('click', infoPayout);
 /*------Functions------*/
 //Spins the reels generating random numbers and assign each number to a predefined emoji scoreboard
 function spinClick() {
-
     if (totalPoints === 0) {
         init()
     }
@@ -60,8 +59,8 @@ function spinClick() {
         }, 2000);
         document.getElementById('spinBtn').style.pointerEvents = 'none'
         document.getElementById('spinBtn').style.backgroundColor = "#37474F";
-        
-         //Block SPIN button for been pressed during spinning
+
+        //Block SPIN button for been pressed during spinning
         let currentTime = 0;
         let interval = 200;     //Add interval to get a random number every 0.25 second
         let maxTime = 4600;      //For a total time of 4.5 seconds
@@ -190,9 +189,6 @@ function getWinner() {
             return;
         }
     }
-    // else if (reel1 === 3 || reel2 === 3 || reel3 === 3) {
-    //     results = 'single-happy'
-    // }
     else {
         return
     }
@@ -254,10 +250,6 @@ function render() {
             win.play();
         }
     }
-    // else if (results === 'single-happy') {
-    //     status.innerText = "✰ ✰ ✰ ✰ ✰ BE HAPPY ✰ ✰ ✰ ✰ ✰";
-    //     points += 5;
-    // }
     else {
         if (reel1 === null) {
             return;
