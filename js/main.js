@@ -5,13 +5,14 @@ const win = new Audio('audio/win.wav');
 const lose = new Audio('audio/lose.wav');
 
 const scoreCard = [
-    { emojiValue: 0, emoji: '😱' },
-    { emojiValue: 1, emoji: '😭', },
-    { emojiValue: 2, emoji: '😠', },
-    { emojiValue: 3, emoji: '😃', },
-    { emojiValue: 4, emoji: '🤑', },
-    { emojiValue: 5, emoji: '💎', },
-    { emojiValue: 6, emoji: '🎰', },
+    { emojiValue: 0, emoji: '🤢' },
+    { emojiValue: 1, emoji: '😱' },
+    { emojiValue: 2, emoji: '😭' },
+    { emojiValue: 3, emoji: '🤬' },
+    { emojiValue: 4, emoji: '😃' },
+    { emojiValue: 5, emoji: '🤑' },
+    { emojiValue: 6, emoji: '💎' },
+    { emojiValue: 7, emoji: '🎰' },
 ]
 
 
@@ -57,18 +58,21 @@ function spinClick() {
         setTimeout(() => {
             score.innerText = totalPoints
         }, 2000);
-        document.getElementById('spinBtn').style.pointerEvents = 'none' //Block SPIN button for been pressed during spinning
+        document.getElementById('spinBtn').style.pointerEvents = 'none'
+        document.getElementById('spinBtn').style.backgroundColor = "#37474F";
+        
+         //Block SPIN button for been pressed during spinning
         let currentTime = 0;
-        let interval = 250;     //Add interval to get a random number every 0.25 second
-        let maxTime = 4500;      //For a total time of 4.5 seconds
+        let interval = 200;     //Add interval to get a random number every 0.25 second
+        let maxTime = 4600;      //For a total time of 4.5 seconds
         // console.log('START')
         let slotInterval = setInterval(function () {
             // console.log('Interval ==> ', currentTime)
             if (currentTime < maxTime) {
                 currentTime += interval
-                reel1 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-                reel2 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-                reel3 = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
+                reel1 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
+                reel2 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
+                reel3 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
                 console.log('reelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
 
                 //Assign the emojis to the random number from reel1, reel2, reel3 using the function findEmoji
@@ -86,6 +90,7 @@ function spinClick() {
             } else {
                 // console.log('END')
                 document.getElementById('spinBtn').style.pointerEvents = 'auto' //Enable SPIN button back after spinning
+                document.getElementById('spinBtn').style.backgroundColor = "#ef1010";
                 clearInterval(slotInterval)
                 render()
             }
@@ -113,9 +118,9 @@ function init() {
     reel3 = null
     results = null
     totalPoints = 50
-    slot1.innerText = scoreCard[6].emoji;
-    slot2.innerText = scoreCard[6].emoji;
-    slot3.innerText = scoreCard[6].emoji;
+    slot1.innerText = scoreCard[7].emoji;
+    slot2.innerText = scoreCard[7].emoji;
+    slot3.innerText = scoreCard[7].emoji;
     score.innerText = totalPoints;
     status.innerText = `✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰`;
     infoMenu.style.visibility = 'collapse';
@@ -128,18 +133,18 @@ function init() {
 function getWinner() {
     results = null;
     if (reel1 === reel2 && reel1 === reel3 && reel2 === reel3) {
-        if (reel1, reel2, reel3 === 6) {
+        if (reel1, reel2, reel3 === 7) {
             results = 'jackpot';
         }
         else {
-            if (reel1, reel2, reel3 === 3) {
+            if (reel1, reel2, reel3 === 4) {
                 results = 'happy-line';
                 console.log(results);
             }
-            else if (reel1, reel2, reel3 === 4) {
+            else if (reel1, reel2, reel3 === 5) {
                 results = 'cash-line';
             }
-            else if (reel1, reel2, reel3 === 5) {
+            else if (reel1, reel2, reel3 === 6) {
                 results = 'diamond-line';
             }
             else {
@@ -149,35 +154,35 @@ function getWinner() {
     }
     else if (reel1 === reel2 || reel1 === reel3 || reel2 === reel3) {
         if (reel1 === reel2) {
-            if (reel1 === 3) {
+            if (reel1 === 4) {
                 results = 'double-happy'
             }
-            if (reel1 === 4) {
+            if (reel1 === 5) {
                 results = 'double-cash'
             }
-            if (reel1 === 5) {
+            if (reel1 === 6) {
                 results = 'double-diamond'
             }
         }
         else if (reel1 === reel3) {
-            if (reel1 === 3) {
+            if (reel1 === 4) {
                 results = 'double-happy'
             }
-            if (reel1 === 4) {
+            if (reel1 === 5) {
                 results = 'double-cash'
             }
-            if (reel1 === 5) {
+            if (reel1 === 6) {
                 results = 'double-diamond'
             }
         }
         else if (reel2 === reel3) {
-            if (reel2 === 3) {
+            if (reel2 === 4) {
                 results = 'double-happy'
             }
-            if (reel2 === 4) {
+            if (reel2 === 5) {
                 results = 'double-cash'
             }
-            if (reel2 === 5) {
+            if (reel2 === 6) {
                 results = 'double-diamond'
             }
         }
@@ -185,9 +190,9 @@ function getWinner() {
             return;
         }
     }
-    else if (reel1 === 3 || reel2 === 3 || reel3 === 3) {
-        results = 'single-happy'
-    }
+    // else if (reel1 === 3 || reel2 === 3 || reel3 === 3) {
+    //     results = 'single-happy'
+    // }
     else {
         return
     }
@@ -249,10 +254,10 @@ function render() {
             win.play();
         }
     }
-    else if (results === 'single-happy') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ BE HAPPY ✰ ✰ ✰ ✰ ✰";
-        points += 5;
-    }
+    // else if (results === 'single-happy') {
+    //     status.innerText = "✰ ✰ ✰ ✰ ✰ BE HAPPY ✰ ✰ ✰ ✰ ✰";
+    //     points += 5;
+    // }
     else {
         if (reel1 === null) {
             return;

@@ -192,24 +192,22 @@ section.console:first-child {
 }
 
 #payout {
-    width: 30%;
-    padding: 50px 0;
+    width: 210px;
+    padding: 48px 0;
     text-align: center;
     background-color: gray;
-    margin-top: 20px;
     visibility: collapse;
     position: absolute;
     border-radius: 11px;
     border: 5px double white;
-    box-shadow: 0 0 34px rgb(90, 84, 84);   
+    box-shadow: 0 0 34px rgb(90 84 84);
     background-color: rgb(153 153 153);
-    height: 33%;    
     background-image: url(/images/payout.jpg);
     background-repeat: no-repeat;
     background-position: center;
     margin-bottom: 500px;
+    height: 290px;
 }
-
 
 /* 768px is a common "breakpoint" width for tablets */
 @media only screen and (min-width: 768px) {
