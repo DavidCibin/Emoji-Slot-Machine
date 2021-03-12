@@ -15,7 +15,6 @@ const scoreCard = [
     { emojiValue: 7, emoji: '🎰' },
 ]
 
-
 /*------Variables (state)------*/
 let totalPoints = 0;
 let results = null;
@@ -27,7 +26,6 @@ let reel1EmojiObject = null;
 let reel2EmojiObject = null;
 let reel3EmojiObject = null
 
-
 /*------Cached Element References------*/
 const slot1 = document.getElementById('reel1');
 const slot2 = document.getElementById('reel2');
@@ -38,12 +36,10 @@ let audio = document.getElementById('audio');
 let newGame = document.getElementById('spinBtn');
 let infoMenu = document.getElementById("payout");
 
-
 /*------Event Listeners------*/
 document.getElementById('spinBtn').addEventListener('click', spinClick);
 document.getElementById('audio').addEventListener('click', toggleAudio);
 document.getElementById('info').addEventListener('click', infoPayout);
-
 
 /*------Functions------*/
 //Spins the reels generating random numbers and assign each number to a predefined emoji scoreboard
@@ -97,16 +93,15 @@ function spinClick() {
     }
 }
 
-
 function findEmoji(foundNum) {                              //foundNum is the parameter that correspond to each random reel
     if (foundNum === null) {
         return;
     }
     let emojiFound = scoreCard.filter(function (obj) {      //returns(creates) an array from the scoreBoard using the filter method
-        // console.log('find emoji??', obj.emojiValue)         //log each emoji value from the scoreBoard
+        // console.log('find emoji??', obj.emojiValue)      //log each emoji value from the scoreBoard
         return obj.emojiValue === foundNum
     })
-    // console.log('emoji found', emojiFound)                  //log each emoji value from the scoreBoard
+    // console.log('emoji found', emojiFound)               //log each emoji value from the scoreBoard
     return emojiFound;
 }
 
@@ -121,7 +116,7 @@ function init() {
     slot2.innerText = scoreCard[7].emoji;
     slot3.innerText = scoreCard[7].emoji;
     score.innerText = totalPoints;
-    status.innerText = `✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰`;
+    status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰ ✰`;
     infoMenu.style.visibility = 'collapse';
     newGame.innerText = 'SPIN';
     getWinner();
@@ -202,7 +197,7 @@ function render() {
     points = 0;
     console.log('points before', points)
     if (results === 'jackpot') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰";
+        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰ ✰";
         points += 100;
         if (sound) {
             jackpot.play();
@@ -216,7 +211,7 @@ function render() {
         }
     }
     else if (results === 'cash-line') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ CASH LINE ✰ ✰ ✰ ✰ ✰";
+        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ CASH LINE ✰ ✰ ✰ ✰ ✰ ✰";
         points += 30;
         if (sound) {
             win.play();
