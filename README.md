@@ -1,5 +1,4 @@
 # Emoji Slot Machine - Created by David Cibin
-### [Github](https://github.com/davidisurf)
  
 ![Emoji Slot Machine Main Screenshot](images/screenshot-desktop.png)
 
@@ -100,6 +99,8 @@ Here is the final version, desktop and mobile.
 
 ![Emoji Slot Machine mobile version](images/screenshot-smartphone.png)
 
+Scoreboard used on code.
+![Emoji Slot Machine final version](images/scoreBoard.png)
 
 
 
