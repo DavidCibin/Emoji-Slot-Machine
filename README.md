@@ -95,10 +95,9 @@ My first idea.
 After first week, became more like this.
 ![Emoji Slot Machine second version](images/wireframe-new.jpg)
 
-Here is the final version.
+Here is the final version, desktop and mobile.
 ![Emoji Slot Machine final version](images/screenshot-desktop.png)
 
-Let's not forget the mobile version.
 ![Emoji Slot Machine mobile version](images/screenshot-smartphone.png)
 
 
