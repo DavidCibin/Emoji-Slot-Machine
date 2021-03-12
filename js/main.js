@@ -44,6 +44,10 @@ document.getElementById('info').addEventListener('click', infoPayout);
 /*------Functions------*/
 //Spins the reels generating random numbers and assign each number to a predefined emoji scoreboard
 function spinClick() {
+    status.innerText = '✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰';
+    setTimeout(() => {
+        status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ GOOD LUCK ✰ ✰ ✰ ✰ ✰ ✰`;
+    }, 3500);
     if (totalPoints === 0) {
         init()
     }
@@ -56,6 +60,7 @@ function spinClick() {
         }, 2000);
         document.getElementById('spinBtn').style.pointerEvents = 'none'
         document.getElementById('spinBtn').style.backgroundColor = "#37474F";
+        
 
         //Block SPIN button for been pressed during spinning
         let currentTime = 0;
@@ -79,7 +84,6 @@ function spinClick() {
                 reel3EmojiObject = findEmoji(reel3);
                 slot3.innerText = reel3EmojiObject[0].emoji
 
-                status.innerText = '✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰';
                 if (sound) {
                     spin.play();
                 }
@@ -117,7 +121,10 @@ function init() {
     slot2.innerText = scoreCard[7].emoji;
     slot3.innerText = scoreCard[7].emoji;
     score.innerText = totalPoints;
-    status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰ ✰`;
+    setTimeout(() => {
+        status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰ ✰`;
+    }, 2500);
+    status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ WELCOME!! ✰ ✰ ✰ ✰ ✰ ✰`;
     infoMenu.style.visibility = 'collapse';
     newGame.innerText = 'SPIN';
     getWinner();

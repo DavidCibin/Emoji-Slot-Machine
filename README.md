@@ -12,7 +12,7 @@ The purpose of this project is to help us understand the control flow behind the
   
 ## Getting Started
  
-You will be able to enjoy my game [here](http://emoji-slot.surge.sh/). I used surge to deploy my game and also you can take a peek on my project on [GitHub](https://github.com/davidisurf/unit-1-project)
+You will be able to enjoy my game on mobile platforms and desktops. I used surge to deploy my game which you can access [here](http://emoji-slot.surge.sh/) and also you can take a peek on my project on [GitHub](https://github.com/davidisurf/unit-1-project)
  
 ## The Game
  
@@ -22,7 +22,7 @@ Each reel consists of a series of 8 emojis displayed randomly when the spin butt
  
 The game in this case starts with 50 points.
  
-The main purpose of the game is to get more points and here is the trick part, now it’s all about luck. Because you will only get more points, if after each spin, you get a combination of emojis. These combinations are displayed below on a “payout” screenshot. So, if you don’t get any of those combos you will lose 5 points after each spin.
+The main purpose of the game is to get more points and here is the trick part, now it’s all about luck. Because you will only get more points, if after each spin, you get a combination of emojis. These combinations are displayed below on a “payout” screenshot. So, if you don’t get any of those combos you will lose 5 points on each spin.
  
 The game will be over when it reaches 0 point.
  
@@ -46,8 +46,6 @@ To accomplish this project, here are the list of used tools:
 ## Next steps.
  
 The game is definitely not over. Here are some other features to be implemented:
- 
-Mobile version will be featured soon!
  
 The multiplier: add one more button to multiple by “2” the result of a possible combination. The downside is if you don’t get a combination you will lose twice the cost per play.
  
@@ -85,6 +83,13 @@ The data structure used for this game:
     * Function render: check for matches found by the getWinner function , displays the winner combos if any and also control all the points. 
     * Function toggleAudio: controls the audios effects and if the user preference for audio on/off
     * Function infoPayout: control the display of the payout combination and cost per play
+    * Function init: handles the initial status of the game; reseting points; reels to initial position; initial play message.
+
+
+## Attributions
+
+Confetti.js from [MathuSum Mut](https://github.com/mathusummut/confetti.js)
+Sound effects from [Mixkit.co](https://mixkit.co/)
 
 #Screenshots
 
