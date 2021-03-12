@@ -48,7 +48,7 @@ function spinClick() {
         init()
     }
     else {
-        confetti.stop()
+        confetti.stop() // confetti stop
         totalPoints -= 5
         score.innerText = -5
         setTimeout(() => {
@@ -204,7 +204,7 @@ function render() {
         if (sound) {
             jackpot.play();
         }
-        confetti.start();
+        confetti.start();   // confetti start
     }
     else if (results === 'happy-line') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ HAPPY LINE ✰ ✰ ✰ ✰ ✰";

@@ -1,19 +1,19 @@
 # Emoji Slot Machine - Created by David Cibin
 ### [Github](https://github.com/davidisurf)
  
-![Emoji Slot Machine Main Screenshot](images/screenshot-desktop.jpg)
+![Emoji Slot Machine Main Screenshot](images/screenshot-desktop.png)
 
 ## About
  
-Hi! My name is David Cibin. I'm from Brazil but currently living in Massachusetts. I am participating in the Software Engineer Program offered by [General Assembly](https://www.generalassemb.ly) and this is my project to present to the end of Unit 1 program. The unit 1 program consists of Javascript, HTML and CSS.
+Hi! My name is David Cibin. I'm from Brazil but currently living in Massachusetts. I have joined the Software Engineer Immersive program offered by [General Assembly](https://www.generalassemb.ly) in the end of February 2021. This is my project presented to the end of Unit 1, which consists in learning the languages: Javascript, HTML and CSS.
  
 ## Introduction
-The purpose of this project is to help us understand the control flow behind the program and an opportunity to show our skills acquired after only two weeks in the program. One of the reasons I chose the slot machine, it brings me back to Vegas, a place that I have good memories of after living there for a few months. You will not find more options to play(gamble) inside a casino than slot machines. Actually I remember the first time I landed at Vegas airport, the first impact I had was to see all those slot machines inside the airport. And in Vegas you will find them everywhere. In coffee shops, restaurants, gift stores, you name it! 
+The purpose of this project is to help us understand the control flow behind the program and an opportunity to show our skills acquired after only two weeks in the program. One of the reasons I chose the slot machine, that brings me back to Vegas, a place that I have good memories of after living there for a few months. You will not find more options to play(gamble) inside a casino than slot machines. Actually I remember the first time I landed at Vegas airport, the first impact I had was to see all those slot machines inside the airport. And in Vegas you will find them everywhere. In coffee shops, restaurants, gift stores, you name it! 
  
   
 ## Getting Started
  
-You will be able to enjoy my game here (link in here). I used surge to deploy my game and you also can take a peek in (link for game repo here)
+You will be able to enjoy my game [here](http://emoji-slot.surge.sh/). I used surge to deploy my game and also you can take a peek on my project on [GitHub](https://github.com/davidisurf/unit-1-project)
  
 ## The Game
  
@@ -29,6 +29,8 @@ The game will be over when it reaches 0 point.
  
 Did you know?
 By law, in Nevada the minimum payout for a slot machine is 75% and in New Jersey the minimum is 83%. Trust me, the “house” always wins!!
+
+![Emoji Slot Machine Payout](images/payout.jpg)
  
 ## Technology
  
@@ -84,6 +86,25 @@ The data structure used for this game:
     * Function render: check for matches found by the getWinner function , displays the winner combos if any and also control all the points. 
     * Function toggleAudio: controls the audios effects and if the user preference for audio on/off
     * Function infoPayout: control the display of the payout combination and cost per play
+
+#Screenshots
+
+My first idea.
+![Emoji Slot Machine first version](images/wireframe-original.jpg)
+
+After first week, became more like this.
+![Emoji Slot Machine second version](images/wireframe-new.jpg)
+
+Here is the final version.
+![Emoji Slot Machine final version](images/screenshot-desktop.png)
+
+Let's not forget the mobile version.
+![Emoji Slot Machine mobile version](images/screenshot-smartphone.png)
+
+
+
+
+
  
  
 

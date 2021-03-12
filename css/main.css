@@ -127,16 +127,10 @@ section.console {
     border-radius: 5px;
     text-align: center;
     margin-top: 20px;
-    /* font-size: 30px; */
     font-weight: bolder;
-    /* display: grid; */
-    /* row-gap: 3px; */
     column-gap: 20px;
     display: flex;
     flex-wrap: wrap-reverse;
-    /* gap: 7px; */
-    /* grid-template-rows: repeat(2, 24vmin); */
-    /* grid-template-columns: repeat(2, 1fr); */
     border-radius: 44px/0px 0px 75px 75px;
     border: 5px double goldenrod;
     background-color: #4c1a4c;
@@ -149,7 +143,6 @@ section.console {
 
 #audio {
     margin: 0px 0px 0px 0px;
-    /* margin-left: 45px; */
     background-color: #ef1010;
     border-radius: 14px;
     background-image: url(/images/audioOn.png);
@@ -161,7 +154,6 @@ section.console {
     width: 57px;
     height: 42px;
 }
-
 
 #info {
     background-color: #ef1010;
@@ -186,8 +178,6 @@ section.console {
     border-radius: 14px;
     font-size: 35px;
     font-family: 'Segment14';
-    /* margin-right: -10px; */
-    /* padding-top: 5px; */
     width: 150px;
     height: 45px;
     padding-top: 3px;
@@ -199,7 +189,6 @@ section.console {
     border-radius: 14px;
     border: 5px double rgb(173, 169, 169);
     box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-    /* padding-top: 7px; */
     width: 110px;
     font-size: 27px;
     height: 45px;
@@ -345,8 +334,6 @@ section.console {
         text-align: center;
         margin-top: 20px;
         display: flex;
-        /* grid-template-rows: repeat(1, 10vmin); */
-        /* grid-template-columns: 16% 16% 34% 34%; */
         border-radius: 50px/0px 0px 95px 95px;
         border: 5px double goldenrod;
         background-color: #4c1a4c;
@@ -356,8 +343,6 @@ section.console {
     }
     
     #audio {
-        /* margin: 15px 0px; */
-        /* margin-left: 45px; */
         background-color: #ef1010;
         border-radius: 14px;
         border: 5px double rgb(173, 169, 169);
@@ -371,7 +356,6 @@ section.console {
     }
     
     #info {
-        /* margin: 15px 22px; */
         background-color: #ef1010;
         border-radius: 14px;
         border: 5px double rgb(173, 169, 169);
@@ -387,21 +371,18 @@ section.console {
     }
     
     #points {
-        /* margin: 15px; */
         background-color: #37474F;
         border: 5px double rgb(173, 169, 169);
         box-shadow: 0 2px 25px rgba(170, 164, 167, 0.5);
         border-radius: 14px;
         font-size: 50px;
         font-family: 'Segment14';
-        /* margin-right: -10px; */
         padding-top: 6px;
         height: 65px;
         width: 250px;
     }
     
     #spinBtn {
-        /* margin: 15px 50px; */
         background-color: #ef1010;
         border-radius: 14px;
         border: 5px double rgb(173, 169, 169);
