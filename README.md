@@ -15,7 +15,7 @@ The purpose of this project is to help us understand the control flow behind the
  
 You will be able to enjoy my game here (link in here). I used surge to deploy my game and you also can take a peek in (link for game repo here)
  
-# The Game
+## The Game
  
 The slot machine here produced by me is the standard layout of the game,  featuring a screen displaying three reels that "spin" when the game is activated. 
  
@@ -33,14 +33,14 @@ By law, in Nevada the minimum payout for a slot machine is 75% and in New Jersey
 ## Technology
  
 To accomplish this project, here are the list of used tools:
-Visual Studio Code
-JavaScript
-HTML5
-CSS
-Git
-GitHub
-Surge
-And many hours of Google search.
+* Visual Studio Code
+* JavaScript
+* HTML5
+* CSS
+* Git
+* GitHub
+* Surge
+* And many hours of Google search.
  
 ## Next steps.
  
