@@ -48,6 +48,7 @@ function spinClick() {
         init()
     }
     else {
+        confetti.stop()
         totalPoints -= 5
         score.innerText = -5
         setTimeout(() => {
@@ -199,9 +200,11 @@ function render() {
     if (results === 'jackpot') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰ ✰";
         points += 100;
+
         if (sound) {
             jackpot.play();
         }
+        confetti.start();
     }
     else if (results === 'happy-line') {
         status.innerText = "✰ ✰ ✰ ✰ ✰ HAPPY LINE ✰ ✰ ✰ ✰ ✰";
@@ -276,7 +279,7 @@ function render() {
 function toggleAudio() {
     if (!sound) {
         sound = true;
-        audio.innerHTML = '<img src="images/audioOn.png">';
+        audio.style.backgroundImage = "url('images/audioOn.png')";
     }
     else {
         sound = false;
@@ -284,7 +287,7 @@ function toggleAudio() {
         win.pause();
         lose.pause();
         jackpot.pause();
-        audio.innerHTML = '<img src="images/audioOff.png">';
+        audio.style.backgroundImage = "url('images/audioOff.png')";
     }
 }
 

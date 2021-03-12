@@ -1,7 +1,7 @@
 # Emoji Slot Machine - Created by David Cibin
 ### [Github](https://github.com/davidisurf)
  
-(images/wireframe-new.jpg)
+![Emoji Slot Machine Main Screenshot](images/screenshot-desktop.jpg)
 
 ## About
  
