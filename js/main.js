@@ -47,7 +47,7 @@ function spinClick() {
     status.innerText = '✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰';
     setTimeout(() => {
         status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ GOOD LUCK ✰ ✰ ✰ ✰ ✰ ✰`;
-    }, 3500);
+    }, 3600);
     if (totalPoints === 0) {
         init()
     }
