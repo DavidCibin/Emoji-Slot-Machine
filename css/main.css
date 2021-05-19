@@ -432,8 +432,10 @@ section.console {
         margin-top: 122px;
         grid-area: handle;
         width: 100px;
+        transition-duration: 0.1s;
     }
     .handle:active {
+        /* transition-duration: 200ms; */
         grid-area: handle;
         width: 100px;
         transform: scaley(-1)
