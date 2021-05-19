@@ -38,6 +38,7 @@ let infoMenu = document.getElementById("payout");
 
 /*------Event Listeners------*/
 document.getElementById('spinBtn').addEventListener('click', spinClick);
+document.getElementById('handle').addEventListener('click', spinClick);
 document.getElementById('audio').addEventListener('click', toggleAudio);
 document.getElementById('info').addEventListener('click', infoPayout);
 
