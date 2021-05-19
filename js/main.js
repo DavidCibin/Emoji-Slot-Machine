@@ -1,5 +1,6 @@
 /*------Constants------*/
 const spin = new Audio('audio/spin.mp3');
+const handle = new Audio('audio/handle.mp3');
 const jackpot = new Audio('audio/jackpot.wav');
 const win = new Audio('audio/win.wav');
 const lose = new Audio('audio/lose.wav');
@@ -38,9 +39,18 @@ let infoMenu = document.getElementById("payout");
 
 /*------Event Listeners------*/
 document.getElementById('spinBtn').addEventListener('click', spinClick);
-document.getElementById('handle').addEventListener('click', spinClick);
+document.getElementById('handle').addEventListener('click', handleSpin);
 document.getElementById('audio').addEventListener('click', toggleAudio);
 document.getElementById('info').addEventListener('click', infoPayout);
+
+function handleSpin() {
+    if (sound) {
+        handle.play();
+        handle.volume = 0.5;
+    }
+    spinClick()
+}
+
 
 /*------Functions------*/
 //Spins the reels generating random numbers and assign each number to a predefined emoji scoreboard
@@ -59,7 +69,8 @@ function spinClick() {
         setTimeout(() => {
             score.innerText = totalPoints
         }, 2000);
-        document.getElementById('spinBtn').style.pointerEvents = 'none'
+        document.getElementById('spinBtn').style.pointerEvents = 'none' // Disable SPIN button after spinning
+        document.getElementById('handle').style.pointerEvents = 'none' // Disable SPIN handle after spinning
         document.getElementById('spinBtn').style.backgroundColor = "#37474F";
         
 
@@ -91,6 +102,7 @@ function spinClick() {
             } else {
                 // console.log('END')
                 document.getElementById('spinBtn').style.pointerEvents = 'auto' //Enable SPIN button back after spinning
+                document.getElementById('handle').style.pointerEvents = 'auto' //Enable SPIN handle back after spinning
                 document.getElementById('spinBtn').style.backgroundColor = "#ef1010";
                 clearInterval(slotInterval)
                 render()
