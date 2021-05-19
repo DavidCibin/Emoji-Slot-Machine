@@ -49,7 +49,7 @@ The game is definitely not over. Here are some other features to be implemented:
  
 The multiplier: add one more button to multiple by “2” the result of a possible combination. The downside is if you don’t get a combination you will lose twice the cost per play.
  
-Like the classic slot machines, a handle will be introduced to the side of the machine, so when you click it, the handle will tilt down for a second, replicating the movement when you pull a slot machines handle to play. 
+~~Like the classic slot machines, a handle will be introduced to the side of the machine, so when you click it, the handle will tilt down for a second, replicating the movement when you pull a slot machines handle to play. 
  
 
 ## Pseudocode
