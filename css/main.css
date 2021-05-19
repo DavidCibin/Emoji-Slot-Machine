@@ -409,3 +409,29 @@ section.console {
         bottom: 300px;
     }
 }
+
+
+.dc-footer {
+    position: fixed;
+    left: 0;
+    bottom: 15px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    /* font-size: 18px; */
+    vertical-align: middle;
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+}
+
+footer a {
+    text-decoration: none;
+    color: #ffbc00;
+}
+.github {
+    margin-right: 15px;
+}
+.linkedin {
+    margin-left: 15px;
+}
