@@ -30,7 +30,7 @@ html {
     font-family: 'Verdana', cursive;
     cursor: pointer;
     color: white;
-    padding-top: 20%;
+    padding-top: 10%;
   }
 
   main{
@@ -212,7 +212,17 @@ section.console {
     left: 25%;
 }
 
+@media only screen and (max-width: 780px) {
+    .handle {
+        display: none;
+    }
+    .main-slot {
+        top: 100px;
+    }
+}
+
 @media only screen and (min-width: 780px) {
+
     /* For desktop: */
     html {
         box-sizing: border-box;
@@ -234,23 +244,31 @@ section.console {
       
       body {
         margin: auto;
-        display: grid;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         font-family: 'Verdana', cursive;
         cursor: pointer;
-        color: white;
-        padding-top: 5%;
+        margin-top: -20px;
       }
     
-      main{
+      .main-slot {
+    }
+    main {
+        /* flex: auto; */
+        grid-area: main-slot;
         width: 780px;
         height: 610px;
         border: 5px goldenrod double;
         border-radius: 68px/250px;
         background: rgb(255,239,158);
         background: linear-gradient(180deg, rgba(255,239,158,1) 0%, rgba(255,228,88,1) 13%, rgba(253,221,56,1) 16%, rgba(255,237,142,1) 18%, rgba(255,239,115,1) 20%, rgba(253,234,45,1) 22%, rgba(252,253,38,1) 33%, rgba(255,255,173,1) 40%, rgba(255,254,206,1) 47%, rgba(255,249,153,1) 50%, rgba(255,246,190,1) 54%, rgba(254,229,122,1) 63%, rgba(254,235,85,1) 68%, rgba(255,233,148,1) 73%, rgba(253,212,58,1) 86%, rgba(255,233,103,1) 94%, rgba(252,235,69,1) 100%);
+        display: grid;
+        grid-template-columns: 1fr 0px;
+        grid-template-areas: 
+        "main-slot handle";
     }
     
       section#header {
@@ -410,8 +428,24 @@ section.console {
         background-position: center;
         bottom: 300px;
     }
+    .handle {
+        margin-top: 122px;
+        grid-area: handle;
+        width: 100px;
+    }
+    .handle:active {
+        grid-area: handle;
+        width: 100px;
+        transform: scaley(-1)
+    }
+    /* .dc-footer {
+        font-size: 14px;
+    } */
 }
 
+footer {
+    flex: 30px;
+}
 .dc-header {
     display: flex;
 }
@@ -427,6 +461,7 @@ section.console {
     margin: 0 auto;
     justify-content: center;
     display: flex;
+    font-size: 14px;
 }
 
 footer a {
