@@ -156,20 +156,6 @@ section.console {
     height: 42px;
 }
 
-#info {
-    background-color: #ef1010;
-    border-radius: 14px;
-    border: 5px double rgb(173, 169, 169);
-    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-    background-image: url(/images/info.png);
-    background-repeat: no-repeat;
-    background-size: 30px 28px;
-    background-position: center;
-    cursor: help;
-    margin: 0px 0px 0px 0px;
-    width: 57px;
-    height: 42px;
-}
 
 #points {
     margin: 0px 0px 0px 0px;
@@ -211,6 +197,20 @@ section.console {
     bottom: 300px;
     left: 25%;
 }
+#info {
+    background-color: #ef1010;
+    border-radius: 14px;
+    border: 5px double rgb(173, 169, 169);
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+    background-image: url(/images/info.png);
+    background-repeat: no-repeat;
+    background-size: 30px 28px;
+    background-position: center;
+    cursor: help;
+    margin: 0px 0px 0px 0px;
+    width: 57px;
+    height: 42px;
+}
 
 @media only screen and (max-width: 780px) {
     .handle {
@@ -222,7 +222,7 @@ section.console {
 }
 
 @media only screen and (min-width: 780px) {
-
+    
     /* For desktop: */
     html {
         box-sizing: border-box;
@@ -433,16 +433,17 @@ section.console {
         grid-area: handle;
         width: 100px;
         transition-duration: 0.1s;
+        cursor: -webkit-grabbing; cursor: grabbing;
     }
     .handle:active {
         /* transition-duration: 200ms; */
         grid-area: handle;
         width: 100px;
-        transform: scaley(-1)
+        transform: scaley(-1);
     }
-    /* .dc-footer {
-        font-size: 14px;
-    } */
+    .handle:hover {
+        cursor: -webkit-grab; cursor: grab;
+    }
 }
 
 footer {

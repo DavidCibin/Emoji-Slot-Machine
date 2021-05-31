@@ -43,14 +43,6 @@ document.getElementById('handle').addEventListener('click', handleSpin);
 document.getElementById('audio').addEventListener('click', toggleAudio);
 document.getElementById('info').addEventListener('click', infoPayout);
 
-function handleSpin() {
-    if (sound) {
-        handle.play();
-        handle.volume = 0.5;
-    }
-    spinClick()
-}
-
 
 /*------Functions------*/
 //Spins the reels generating random numbers and assign each number to a predefined emoji scoreboard
@@ -318,6 +310,15 @@ function infoPayout() {
     } else {
         infoMenu.style.visibility = "collapse";
     }
+}
+
+
+function handleSpin() {
+    if (sound) {
+        handle.play();
+        handle.volume = 0.5;
+    }
+    spinClick()
 }
 
 init();
