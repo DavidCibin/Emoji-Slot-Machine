@@ -93,19 +93,11 @@ Sound effects from [Mixkit.co](https://mixkit.co/)
 
 #Screenshots
 
-My first idea.
 ![Emoji Slot Machine first version](images/wireframe-original.jpg)
 
-After first week, became more like this.
 ![Emoji Slot Machine second version](images/wireframe-new.jpg)
 
-Here is the final version, desktop and mobile.
-![Emoji Slot Machine final version](images/screenshot-desktop.png)
-
-![Emoji Slot Machine mobile version](images/screenshot-smartphone.png)
-
-Scoreboard used on code.
-![Emoji Slot Machine final version](images/scoreBoard.png)
+![Emoji Slot Machine final version](images/print-desktop.png)
 
 
 
