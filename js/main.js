@@ -75,9 +75,9 @@ function spinClick() {
             // console.log('Interval ==> ', currentTime)
             if (currentTime < maxTime) {
                 currentTime += interval
-                reel1 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
-                reel2 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
-                reel3 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
+                reel1 = Math.floor(Math.random() * (7 - 7 + 1)) + 7;
+                reel2 = Math.floor(Math.random() * (7 - 7 + 1)) + 7;
+                reel3 = Math.floor(Math.random() * (7 - 6 + 1)) + 6;
                 console.log('reelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
 
                 //Assign the emojis to the random number from reel1, reel2, reel3 using the function findEmoji
