@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Segment14'; /*a name to be used later*/
-    src: url(/fonts/Segment14.otf) /*URL to font*/
+    src: url(../fonts/Segment14.otf) /*URL to font*/
 }
 
 html {
     box-sizing: border-box;
-    background: url(/images/background-responsive.jpg) no-repeat center center fixed; 
+    background: url(../images/background-responsive.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -146,7 +146,7 @@ section.console {
     margin: 0px 0px 0px 0px;
     background-color: #ef1010;
     border-radius: 14px;
-    background-image: url(/images/audioOn.png);
+    background-image: url(../images/audioOn.png);
     background-repeat: no-repeat;
     background-size: 35px 35px;
     background-position: center;
@@ -191,7 +191,7 @@ section.console {
     border: 5px double white;
     box-shadow: 0 0 34px rgb(90 84 84);
     background-color: rgb(153 153 153);
-    background-image: url(/images/payout.jpg);
+    background-image: url(../images/payout.jpg);
     background-repeat: no-repeat;
     background-position: center;
     bottom: 300px;
@@ -202,7 +202,7 @@ section.console {
     border-radius: 14px;
     border: 5px double rgb(173, 169, 169);
     box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-    background-image: url(/images/info.png);
+    background-image: url(../images/info.png);
     background-repeat: no-repeat;
     background-size: 30px 28px;
     background-position: center;
@@ -226,7 +226,7 @@ section.console {
     /* For desktop: */
     html {
         box-sizing: border-box;
-        background: url(/images/background-responsive.jpg) no-repeat center center fixed; 
+        background: url(../images/background-responsive.jpg) no-repeat center center fixed; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -369,7 +369,7 @@ section.console {
         box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
         height: 65px;
         width: 65px;
-        background-image: url(/images/audioOn.png);
+        background-image: url(../images/audioOn.png);
         background-repeat: no-repeat;
         background-size: 50px 50px;
         background-position: center;
@@ -379,7 +379,7 @@ section.console {
         background-color: #ef1010;
         border-radius: 14px;
         border: 5px double rgb(173, 169, 169);
-        background-image: url(/images/info.png);
+        background-image: url(../images/info.png);
         box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
         background-repeat: no-repeat;
         background-size: 40px 40px;
@@ -423,7 +423,7 @@ section.console {
         border: 5px double white;
         box-shadow: 0 0 34px rgb(90 84 84);
         background-color: rgb(153 153 153);
-        background-image: url(/images/payout.jpg);
+        background-image: url(../images/payout.jpg);
         background-repeat: no-repeat;
         background-position: center;
         bottom: 300px;
