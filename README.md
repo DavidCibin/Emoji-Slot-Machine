@@ -12,7 +12,7 @@ The purpose of this project is to help us understand the control flow behind the
   
 ## Getting Started
  
-You will be able to enjoy my game on mobile platforms and desktops. I used surge to deploy my game which you can access [here](http://emoji-slot.surge.sh/) and also you can take a peek on my project on [GitHub](https://github.com/DavidCibin/Emoji-Slot-Machine)
+You will be able to enjoy my game on mobile platforms and desktops. I used surge to deploy my game which you can access [here](http://davidcibin.com/slot-machine) and also you can take a peek on my project on [GitHub](https://github.com/DavidCibin/Emoji-Slot-Machine)
  
 ## The Game
  
