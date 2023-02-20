@@ -18,7 +18,7 @@ You will be able to enjoy my game on mobile platforms and desktops. I used surge
  
 The slot machine here produced by me is the standard layout of the game,  featuring a screen displaying three reels that "spin" when the game is activated. 
  
-Each reel consists of a series of 8 emojis displayed randomly when the spin button is clicked. Here are the emojis chose by me: 🤢 😱 😭 🤬 😃 🤑 💎 🎰. 
+Each reel consists of a series of 8 emojis displayed randomly when the spin button is clicked. Here are the emojis chosen by me: 🤢 😱 😭 🤬 😃 🤑 💎 🎰. 
  
 The game in this case starts with 50 points.
  
