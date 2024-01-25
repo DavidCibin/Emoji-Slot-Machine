@@ -20,7 +20,7 @@ const replacementMap = {
     '9': '🤑',
     '10': '💎',
     '11': '🎰',
-  };
+};
 
 // const scoreCard = [
 //     { emojiValue: 0, emoji: '🤢' },
@@ -86,7 +86,7 @@ function spinClick() {
         document.getElementById('spinBtn').style.pointerEvents = 'none' // Disable SPIN button after spinning
         document.getElementById('handle').style.pointerEvents = 'none' // Disable SPIN handle after spinning
         document.getElementById('spinBtn').style.backgroundColor = "#37474F";
-        
+
 
         //Block SPIN button for been pressed during spinning
         let currentTime = 0;
@@ -156,55 +156,55 @@ function init() {
     newGame.innerText = 'SPIN';
     console.log(document.querySelector('#ring1'), "HELLO")
     createSlots('#ring1');
- 	createSlots('#ring2');
- 	createSlots('#ring3');
+    createSlots('#ring2');
+    createSlots('#ring3');
     getWinner();
     render();
 }
 
 function getSeed() {
-	// generate random number smaller than 13 then floor it to settle between 0 and 12 inclusive
-	return Math.floor(Math.random()*(slotsPerReel));
+    // generate random number smaller than 13 then floor it to settle between 0 and 12 inclusive
+    return Math.floor(Math.random() * (slotsPerReel));
 }
 
 function spinReels(timer) {
     // Get all elements with the class 'ring'
     const ringElements = document.querySelectorAll('.ring');
     // Loop through each 'ring' element and set margin-top to 7px
-    ringElements.forEach(el => {el.style.marginTop = '7px'});
-	const seeds = []
+    ringElements.forEach(el => { el.style.marginTop = '7px' });
+    const seeds = []
     for (var i = 1; i < 6; i++) {
         var ringElement = document.getElementById('ring' + i);
-      
+
         if (ringElement) {
             var oldSeed = -1;
-      
-        // Checking that the old seed from the previous iteration is not the same as the current iteration;
-        // If this happens, then the reel will not spin at all
-        var oldClass = ringElement.className;
-        if (oldClass.length > 4) {
-            oldSeed = parseInt(oldClass.slice(10));
-        }
-      
-        var seed = getSeed();
-        while (oldSeed === seed) {
-            seed = getSeed();
-        }
-      
-          ringElement.style.animation = 'back-spin 1s, spin-' + seed + ' ' + (timer + i * 0.5) + 's';
-          ringElement.className = 'ring spin-' + seed;
+
+            // Checking that the old seed from the previous iteration is not the same as the current iteration;
+            // If this happens, then the reel will not spin at all
+            var oldClass = ringElement.className;
+            if (oldClass.length > 4) {
+                oldSeed = parseInt(oldClass.slice(10));
+            }
+
+            var seed = getSeed();
+            while (oldSeed === seed) {
+                seed = getSeed();
+            }
+
+            ringElement.style.animation = 'back-spin 1s, spin-' + seed + ' ' + (timer + i * 0.5) + 's';
+            ringElement.className = 'ring spin-' + seed;
         } else {
             console.error('Element with ID "ring' + i + '" not found.');
         }
-        if ([3,9,4,10].includes(seed)) {
+        if ([3, 9, 4, 10].includes(seed)) {
             seed = 0
-        } else if ([5,11].includes(seed)) {
+        } else if ([5, 11].includes(seed)) {
             seed = 4
-        } else if ([0,6].includes(seed)) {
+        } else if ([0, 6].includes(seed)) {
             seed = 5
-        } else if ([1,7].includes(seed)) {
+        } else if ([1, 7].includes(seed)) {
             seed = 6
-        } else if ([2,8].includes(seed)) {
+        } else if ([2, 8].includes(seed)) {
             seed = 7
         }
         seeds.push(seed)
@@ -212,17 +212,17 @@ function spinReels(timer) {
     reel1 = seeds[0]
     reel2 = seeds[1]
     reel3 = seeds[2]
-      
+
 }
 
-function createSlots (ringId) {
-	var slotAngle = 360 / slotsPerReel;
-	var seed = 11;
+function createSlots(ringId) {
+    var slotAngle = 360 / slotsPerReel;
+    var seed = 11;
 
-	for (var i = 0; i < slotsPerReel; i ++) {
-		var slot = document.createElement('div');
+    for (var i = 0; i < slotsPerReel; i++) {
+        var slot = document.createElement('div');
         slot.className = 'slot';
-        
+
         // Compute and assign the transform for this slot
         slot.style.transform = 'rotateX(' + (slotAngle * i) + 'deg) translateZ(' + reelRadious + 'px)';
 
@@ -235,7 +235,7 @@ function createSlots (ringId) {
         const ring = document.querySelector(ringId)
         console.log(ring, ringId);
         ring.appendChild(slot);
-	}
+    }
 }
 
 // Function to check for matchs and handle points

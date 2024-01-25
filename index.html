@@ -17,15 +17,12 @@
 </head>
 
 <body>
-    <div id="main">
+    <content id="main">
         <main>
-            <div class="main-slot" >
+            <div class="main-slot">
                 <section id="header" class="glow">✺ ✺ ✺ ✺ ✺ ✺ ✺ ✺ ✺</section>
                 <section id="status" class="glow"></section>
                 <section class="reels">
-                    <!-- <div id="reel1"></div>
-                    <div id="reel2"></div>
-                    <div id="reel3"></div> -->
                     <div id="stage" class="perspective-on">
                         <div id="rotate">
                             <div id="reel1">
@@ -37,11 +34,8 @@
                             <div id="reel3">
                                 <div id="ring3" class="ring"></div>
                             </div>
-                            <!-- <div id="ring1" class="ring"></div>
-                            <div id="ring2" class="ring"></div>
-                            <div id="ring3" class="ring"></div> -->
-                </div>
-                <div>
+                        </div>
+                    <div>
                 </section>
                 <section class="console">
                     <div id="audio"></div>
@@ -52,7 +46,7 @@
                     <div id="spinBtn"></div>
                 </section>
             </div>
-            <section id="handle">
+            <section id="handle" class="go">
                 <img class="handle" src="https://i.ibb.co/Z2fz0mL/SLOT-Machine-handle.png" alt="SLOT-Machine-handle"
                     border="0">
             </section>
@@ -75,158 +69,6 @@
                     alt="pngjoy-com-linkedin-icons-png-linkedin-logo-white-png-transparent-6953811" height="20px"
                     border="0"></a>
         </div>
-
-        <!-- <script type="text/javascript">
-            const SLOTS_PER_REEL = 12;
-// radius = Math.round( ( panelWidth / 2) / Math.tan( Math.PI / SLOTS_PER_REEL ) ); 
-// current settings give a value of 149, rounded to 150
-const REEL_RADIUS = 300;
-
-const replacementMap = {
-  '0': '😭',
-  '1': '🤬',
-  '2': '😃',
-  '3': '🤑',
-  '4': '💎',
-  '5': '🎰',
-  '6': '😭',
-  '7': '🤬',
-  '8': '😃',
-  '9': '🤑',
-  '10': '💎',
-  '11': '🎰',
-};
-
-function createSlots (ring) {
-	
-	var slotAngle = 360 / SLOTS_PER_REEL;
-
-	var seed = 11;
-
-	for (var i = 0; i < SLOTS_PER_REEL; i ++) {
-		var slot = document.createElement('div');
-		
-		slot.className = 'slot';
-
-		// compute and assign the transform for this slot
-		var transform = 'rotateX(' + (slotAngle * i) + 'deg) translateZ(' + REEL_RADIUS + 'px)';
-    console.log(" slotAngle * i:", slotAngle * i,"slotAngle:", slotAngle, "i", i, "seed:", seed, "REEL_RADIUS:", REEL_RADIUS)
-
-		slot.style.transform = transform;
-
-		// setup the number to show inside the slots
-		// the position is randomized to 
-
-		var content = $(slot).append('<p>' + replacementMap[((seed + i)%6)] + '</p>');
-
-		// add the poster to the row
-		ring.append(slot);
-	}
-// // Get all elements with the class "slot"
-// const slotElements = document.querySelectorAll('.slot');
-
-// // Define a mapping for replacements
-
-
-// // Loop through each slot element
-// slotElements.forEach(slotElement => {
-//   // Get the p element inside the current slot element
-//   const pElement = slotElement.querySelector('p');
-
-//   // Check if p element exists and innerText is a key in the replacement map
-//   if (pElement && replacementMap.hasOwnProperty(pElement.innerText)) {
-//     // Replace innerText with the corresponding value from the map
-//     pElement.innerText = replacementMap[pElement.innerText];
-//   }
-// });
-
-}
-
-function getSeed() {
-	// generate random number smaller than 13 then floor it to settle between 0 and 12 inclusive
-	return Math.floor(Math.random()*(SLOTS_PER_REEL));
-}
-
-function spin(timer) {
-    // Get all elements with the class 'ring'
-    const ringElements = document.querySelectorAll('.ring');
-
-    // Loop through each 'ring' element and set margin-top to 7px
-    ringElements.forEach(ringElement => {
-    ringElement.style.marginTop = '7px';
-    });
-	//var txt = 'seeds: ';
-	for(var i = 1; i < 6; i ++) {
-		var oldSeed = -1;
-		/*
-		checking that the old seed from the previous iteration is not the same as the current iteration;
-		if this happens then the reel will not spin at all
-		*/
-		var oldClass = $('#ring'+i).attr('class');
-    console.log("oldClass:", oldClass);
-		if(oldClass.length > 4) {
-			oldSeed = parseInt(oldClass.slice(10));
-			console.log("oldSeed:", oldSeed);
-		}
-		var seed = getSeed();
-		while(oldSeed == seed) {
-			seed = getSeed();
-		}
-        console.log("new seed?", seed);
-        console.log('animation','back-spin 1s, spin-' + seed + ' ' + (timer + i*0.5) + 's');
-        console.log(seed, timer, i, 0.5, "timer:", timer + i*0.5);
-
-		$('#ring'+i)
-			.css('animation','back-spin 1s, spin-' + seed + ' ' + (timer + i * 0.5) + 's')
-			.attr('class','ring spin-' + seed);
-	}
-    
-	console.log('=====');
-}
-
-$(document).ready(function() {
-
-	// initiate slots 
- 	createSlots($('#ring1'));
- 	createSlots($('#ring2'));
- 	createSlots($('#ring3'));
-
- 	// hook start button
- 	$('.go').on('click',function(){
- 		var timer = 3;
- 		// spin(timer);
- 	})
-
- 	// // hook xray checkbox
- 	// $('#xray').on('click',function(){
- 	// 	//var isChecked = $('#xray:checked');
- 	// 	var tilt = 'tiltout';
- 		
-    // if($(this).is(':checked')) {
- 	// 		tilt = 'tiltin';
- 	// 		$('.slot').addClass('backface-on');
- 	// 		$('#rotate').css('animation',tilt + ' 2s 1');
-
-	// 		setTimeout(function(){
-	// 		  $('#rotate').toggleClass('tilted');
-	// 		},2000);
- 	// 	} else {
-    //   tilt = 'tiltout';
- 	// 		$('#rotate').css({'animation':tilt + ' 2s 1'});
-
-	// 		setTimeout(function(){
-	//  			$('#rotate').toggleClass('tilted');
-	//  			$('.slot').removeClass('backface-on');
-	//  		},1900);
- 	// 	}
- 	// })
-
- 	// // hook perspective
- 	// $('#perspective').on('click',function(){
- 	// 	$('#stage').toggleClass('perspective-on perspective-off');
- 	// })	
- });
-        </script> -->
         <!-- Copyright -->
     </footer>
 </body>
