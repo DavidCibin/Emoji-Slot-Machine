@@ -50,7 +50,7 @@ document.getElementById('info').addEventListener('click', infoPayout);
 /*------Functions------*/
 //Spins the reels generating random numbers and assign each number to a predefined emoji scoreboard
 function spinClick() {
-    console.log("SPIN!?!?");
+    // console.log("SPIN!?!?");
     // time for the first spint to stop (in seconds)
     const timer = 3;
     spinReels(timer);
@@ -83,19 +83,6 @@ function spinClick() {
             console.log('Interval ==> ', currentTime)
             if (currentTime < maxTime) {
                 currentTime += interval
-                // reel1 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
-                // reel2 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
-                // reel3 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
-                // console.log('reelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
-
-                // //Assign the emojis to the random number from reel1, reel2, reel3 using the function findEmoji
-                // reel1EmojiObject = findEmoji(reel1);
-                // slot1.innerText = reel1EmojiObject[0].emoji
-                // reel2EmojiObject = findEmoji(reel2);
-                // slot2.innerText = reel2EmojiObject[0].emoji
-                // reel3EmojiObject = findEmoji(reel3);
-                // slot3.innerText = reel3EmojiObject[0].emoji
-
                 if (sound) {
                     spin.play();
                 }
@@ -111,18 +98,6 @@ function spinClick() {
     }
 }
 
-// function findEmoji(foundNum) {                              //foundNum is the parameter that correspond to each random reel
-//     if (foundNum === null) {
-//         return;
-//     }
-//     let emojiFound = scoreCard.filter(function (obj) {      //returns(creates) an array from the scoreBoard using the filter method
-//         // console.log('find emoji??', obj.emojiValue)      //log each emoji value from the scoreBoard
-//         return obj.emojiValue === foundNum
-//     })
-//     // console.log('emoji found', emojiFound)               //log each emoji value from the scoreBoard
-//     return emojiFound;
-// }
-
 //Initialization function:
 function init() {
     reel1 = null
@@ -130,9 +105,6 @@ function init() {
     reel3 = null
     results = null
     totalPoints = 50
-    // slot1.innerText = scoreCard[7].emoji;
-    // slot2.innerText = scoreCard[7].emoji;
-    // slot3.innerText = scoreCard[7].emoji;
     score.innerText = totalPoints;
     setTimeout(() => {
         statusBar.innerText = `✰ ✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰ ✰`;
