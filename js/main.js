@@ -22,17 +22,6 @@ const replacementMap = {
     '11': '🎰',
 };
 
-// const scoreCard = [
-//     { emojiValue: 0, emoji: '🤢' },
-//     { emojiValue: 1, emoji: '😱' },
-//     { emojiValue: 2, emoji: '😭' },
-//     { emojiValue: 3, emoji: '🤬' },
-//     { emojiValue: 4, emoji: '😃' },
-//     { emojiValue: 5, emoji: '🤑' },
-//     { emojiValue: 6, emoji: '💎' },
-//     { emojiValue: 7, emoji: '🎰' },
-// ]
-
 /*------Variables (state)------*/
 let totalPoints = 0;
 let results = null;
@@ -45,11 +34,8 @@ let reel2EmojiObject = null;
 let reel3EmojiObject = null
 
 /*------Cached Element References------*/
-// const slot1 = document.getElementById('reel1');
-// const slot2 = document.getElementById('reel2');
-// const slot3 = document.getElementById('reel3');
 let score = document.getElementById('points');
-let status = document.getElementById('status')
+let statusBar = document.getElementById('statusBar')
 let audio = document.getElementById('audio');
 let newGame = document.getElementById('spinBtn');
 let infoMenu = document.getElementById("payout");
@@ -69,9 +55,9 @@ function spinClick() {
     const timer = 3;
     spinReels(timer);
 
-    status.innerText = '✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰';
+    statusBar.innerText = '✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰';
     setTimeout(() => {
-        status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ GOOD LUCK ✰ ✰ ✰ ✰ ✰ ✰`;
+        statusBar.innerText = `✰ ✰ ✰ ✰ ✰ ✰ GOOD LUCK ✰ ✰ ✰ ✰ ✰ ✰`;
     }, 3600);
     if (totalPoints === 0) {
         init()
@@ -149,9 +135,9 @@ function init() {
     // slot3.innerText = scoreCard[7].emoji;
     score.innerText = totalPoints;
     setTimeout(() => {
-        status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰ ✰`;
+        statusBar.innerText = `✰ ✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰ ✰`;
     }, 2500);
-    status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ WELCOME!! ✰ ✰ ✰ ✰ ✰ ✰`;
+    statusBar.innerText = `✰ ✰ ✰ ✰ ✰ ✰ WELCOME!! ✰ ✰ ✰ ✰ ✰ ✰`;
     infoMenu.style.visibility = 'collapse';
     newGame.innerText = 'SPIN';
     console.log(document.querySelector('#ring1'), "HELLO")
@@ -313,7 +299,7 @@ function render() {
     points = 0;
     console.log('points before', points)
     if (results === 'jackpot') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰ ✰";
+        statusBar.innerText = "✰ ✰ ✰ ✰ ✰ ✰ JACKPOT ✰ ✰ ✰ ✰ ✰ ✰";
         points += 100;
 
         if (sound) {
@@ -322,42 +308,42 @@ function render() {
         confetti.start();   // confetti start
     }
     else if (results === 'happy-line') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ HAPPY LINE ✰ ✰ ✰ ✰ ✰";
+        statusBar.innerText = "✰ ✰ ✰ ✰ ✰ HAPPY LINE ✰ ✰ ✰ ✰ ✰";
         points += 15;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'cash-line') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ ✰ CASH LINE ✰ ✰ ✰ ✰ ✰ ✰";
+        statusBar.innerText = "✰ ✰ ✰ ✰ ✰ ✰ CASH LINE ✰ ✰ ✰ ✰ ✰ ✰";
         points += 30;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'diamond-line') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ DIAMOND LINE ✰ ✰ ✰ ✰ ✰";
+        statusBar.innerText = "✰ ✰ ✰ ✰ ✰ DIAMOND LINE ✰ ✰ ✰ ✰ ✰";
         points += 50;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-happy') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE HAPPY ✰ ✰ ✰ ✰ ✰";
+        statusBar.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE HAPPY ✰ ✰ ✰ ✰ ✰";
         points += 10;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-cash') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE CASH ✰ ✰ ✰ ✰ ✰";
+        statusBar.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE CASH ✰ ✰ ✰ ✰ ✰";
         points += 20;
         if (sound) {
             win.play();
         }
     }
     else if (results === 'double-diamond') {
-        status.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE DIAMOND ✰ ✰ ✰ ✰ ✰";
+        statusBar.innerText = "✰ ✰ ✰ ✰ ✰ DOUBLE DIAMOND ✰ ✰ ✰ ✰ ✰";
         points += 40;
         if (sound) {
             win.play();
@@ -368,9 +354,9 @@ function render() {
             return;
         }
         if (totalPoints > 0) {
-            status.innerText = "✰ ✰ ✰ ✰ ✰ SPIN AGAIN ✰ ✰ ✰ ✰ ✰";
+            statusBar.innerText = "✰ ✰ ✰ ✰ ✰ SPIN AGAIN ✰ ✰ ✰ ✰ ✰";
         } else {
-            status.innerText = "😭 😭 😭 😭 GAME OVER 😭 😭 😭 😭";
+            statusBar.innerText = "😭 😭 😭 😭 GAME OVER 😭 😭 😭 😭";
             newGame.innerText = 'PLAY'
         }
         if (sound) {

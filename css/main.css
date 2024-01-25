@@ -78,7 +78,7 @@ html {
     }
 }
 
-section#status{
+section#statusBar{
     text-align: center;
     width: 310px;
     margin: auto;
@@ -317,7 +317,7 @@ section.console {
         }
     }
     
-    section#status{
+    section#statusBar{
         text-align: center;
         width: 720px;
         margin: auto;
