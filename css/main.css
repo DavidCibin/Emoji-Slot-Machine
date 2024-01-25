@@ -117,21 +117,9 @@ section.reels {
     justify-content: center;
     align-items: center;
     border: 5px goldenrod double;
-    box-shadow: inset 0px -20px 35px 0px #cccccc8a, inset 0px 20px 20px 0px #cccccc8a;
+    box-shadow: inset 0px -15px 10px 0px #000000, inset 0px 15px 10px 0px #000000;
 }
 
-/* #reel1, #reel2, #reel3 {
-    margin: auto;
-    justify-content: center;
-    align-content: center;
-    display: grid;
-    background-color: white;   
-    border: 5px goldenrod double;
-    width: 90%;
-    height: 100%;
-    margin: auto;
-    
-} */
 #reel1 {
     border-radius: 35px/117px 0px 0px 115px;
 }
@@ -358,6 +346,7 @@ section.console {
         width: 90%;
         height: 300px;
         margin: auto;
+        box-shadow: inset 0px -20px 15px 0px #000000, inset 0px 20px 15px 0px #000000;
         
     }
     #reel1 {
