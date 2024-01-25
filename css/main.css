@@ -33,6 +33,13 @@ html {
     padding-top: 10%;
   }
 
+  #main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
   main{
     width: 350px;
     height: 510px;
@@ -103,6 +110,16 @@ section.reels {
 }
 
 #reel1, #reel2, #reel3 {
+    overflow: hidden;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px goldenrod double;
+    box-shadow: inset 0px -20px 35px 0px #cccccc8a, inset 0px 20px 20px 0px #cccccc8a;
+}
+
+/* #reel1, #reel2, #reel3 {
     margin: auto;
     justify-content: center;
     align-content: center;
@@ -113,7 +130,7 @@ section.reels {
     height: 100%;
     margin: auto;
     
-}
+} */
 #reel1 {
     border-radius: 35px/117px 0px 0px 115px;
 }
@@ -278,7 +295,7 @@ section.console {
         justify-content: center;
         align-items: center;
         padding-bottom: 5px;
-        margin-top: -70px;
+        margin-top: -63px;
         margin-bottom: 35px;
         font-size: 40px;
         text-align: center;
@@ -334,7 +351,7 @@ section.console {
         background-color: white;   
         border: 5px goldenrod double;
         width: 90%;
-        height: 100%;
+        /* height: 100%; */
         margin: auto;
         
     }

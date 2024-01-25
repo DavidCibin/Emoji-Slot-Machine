@@ -1,20 +1,37 @@
 /*------Constants------*/
+const slotsPerReel = 12
+const reelRadious = 300;
 const spin = new Audio('audio/spin.mp3');
 const handle = new Audio('audio/handle.mp3');
 const jackpot = new Audio('audio/jackpot.wav');
 const win = new Audio('audio/win.wav');
 const lose = new Audio('audio/lose.wav');
 
-const scoreCard = [
-    { emojiValue: 0, emoji: '🤢' },
-    { emojiValue: 1, emoji: '😱' },
-    { emojiValue: 2, emoji: '😭' },
-    { emojiValue: 3, emoji: '🤬' },
-    { emojiValue: 4, emoji: '😃' },
-    { emojiValue: 5, emoji: '🤑' },
-    { emojiValue: 6, emoji: '💎' },
-    { emojiValue: 7, emoji: '🎰' },
-]
+const replacementMap = {
+    '0': '😭',
+    '1': '🤬',
+    '2': '😃',
+    '3': '🤑',
+    '4': '💎',
+    '5': '🎰',
+    '6': '😭',
+    '7': '🤬',
+    '8': '😃',
+    '9': '🤑',
+    '10': '💎',
+    '11': '🎰',
+  };
+
+// const scoreCard = [
+//     { emojiValue: 0, emoji: '🤢' },
+//     { emojiValue: 1, emoji: '😱' },
+//     { emojiValue: 2, emoji: '😭' },
+//     { emojiValue: 3, emoji: '🤬' },
+//     { emojiValue: 4, emoji: '😃' },
+//     { emojiValue: 5, emoji: '🤑' },
+//     { emojiValue: 6, emoji: '💎' },
+//     { emojiValue: 7, emoji: '🎰' },
+// ]
 
 /*------Variables (state)------*/
 let totalPoints = 0;
@@ -28,9 +45,9 @@ let reel2EmojiObject = null;
 let reel3EmojiObject = null
 
 /*------Cached Element References------*/
-const slot1 = document.getElementById('reel1');
-const slot2 = document.getElementById('reel2');
-const slot3 = document.getElementById('reel3');
+// const slot1 = document.getElementById('reel1');
+// const slot2 = document.getElementById('reel2');
+// const slot3 = document.getElementById('reel3');
 let score = document.getElementById('points');
 let status = document.getElementById('status')
 let audio = document.getElementById('audio');
@@ -47,6 +64,11 @@ document.getElementById('info').addEventListener('click', infoPayout);
 /*------Functions------*/
 //Spins the reels generating random numbers and assign each number to a predefined emoji scoreboard
 function spinClick() {
+    console.log("SPIN!?!?");
+    // time for the first spint to stop (in seconds)
+    const timer = 3;
+    spinReels(timer);
+
     status.innerText = '✰ ✰ ✰ ✰ ✰ SPINNING ✰ ✰ ✰ ✰ ✰';
     setTimeout(() => {
         status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ GOOD LUCK ✰ ✰ ✰ ✰ ✰ ✰`;
@@ -70,23 +92,23 @@ function spinClick() {
         let currentTime = 0;
         let interval = 200;     //Add interval to get a random number every 0.25 second
         let maxTime = 4600;      //For a total time of 4.5 seconds
-        // console.log('START')
+        console.log('START')
         let slotInterval = setInterval(function () {
-            // console.log('Interval ==> ', currentTime)
+            console.log('Interval ==> ', currentTime)
             if (currentTime < maxTime) {
                 currentTime += interval
-                reel1 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
-                reel2 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
-                reel3 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
-                console.log('reelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
+                // reel1 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
+                // reel2 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
+                // reel3 = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
+                // console.log('reelnums', reel1, reel2, reel3); //debug random numbers each time functions "runs"
 
-                //Assign the emojis to the random number from reel1, reel2, reel3 using the function findEmoji
-                reel1EmojiObject = findEmoji(reel1);
-                slot1.innerText = reel1EmojiObject[0].emoji
-                reel2EmojiObject = findEmoji(reel2);
-                slot2.innerText = reel2EmojiObject[0].emoji
-                reel3EmojiObject = findEmoji(reel3);
-                slot3.innerText = reel3EmojiObject[0].emoji
+                // //Assign the emojis to the random number from reel1, reel2, reel3 using the function findEmoji
+                // reel1EmojiObject = findEmoji(reel1);
+                // slot1.innerText = reel1EmojiObject[0].emoji
+                // reel2EmojiObject = findEmoji(reel2);
+                // slot2.innerText = reel2EmojiObject[0].emoji
+                // reel3EmojiObject = findEmoji(reel3);
+                // slot3.innerText = reel3EmojiObject[0].emoji
 
                 if (sound) {
                     spin.play();
@@ -103,17 +125,17 @@ function spinClick() {
     }
 }
 
-function findEmoji(foundNum) {                              //foundNum is the parameter that correspond to each random reel
-    if (foundNum === null) {
-        return;
-    }
-    let emojiFound = scoreCard.filter(function (obj) {      //returns(creates) an array from the scoreBoard using the filter method
-        // console.log('find emoji??', obj.emojiValue)      //log each emoji value from the scoreBoard
-        return obj.emojiValue === foundNum
-    })
-    // console.log('emoji found', emojiFound)               //log each emoji value from the scoreBoard
-    return emojiFound;
-}
+// function findEmoji(foundNum) {                              //foundNum is the parameter that correspond to each random reel
+//     if (foundNum === null) {
+//         return;
+//     }
+//     let emojiFound = scoreCard.filter(function (obj) {      //returns(creates) an array from the scoreBoard using the filter method
+//         // console.log('find emoji??', obj.emojiValue)      //log each emoji value from the scoreBoard
+//         return obj.emojiValue === foundNum
+//     })
+//     // console.log('emoji found', emojiFound)               //log each emoji value from the scoreBoard
+//     return emojiFound;
+// }
 
 //Initialization function:
 function init() {
@@ -122,9 +144,9 @@ function init() {
     reel3 = null
     results = null
     totalPoints = 50
-    slot1.innerText = scoreCard[7].emoji;
-    slot2.innerText = scoreCard[7].emoji;
-    slot3.innerText = scoreCard[7].emoji;
+    // slot1.innerText = scoreCard[7].emoji;
+    // slot2.innerText = scoreCard[7].emoji;
+    // slot3.innerText = scoreCard[7].emoji;
     score.innerText = totalPoints;
     setTimeout(() => {
         status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ LET'S PLAY ✰ ✰ ✰ ✰ ✰ ✰`;
@@ -132,12 +154,93 @@ function init() {
     status.innerText = `✰ ✰ ✰ ✰ ✰ ✰ WELCOME!! ✰ ✰ ✰ ✰ ✰ ✰`;
     infoMenu.style.visibility = 'collapse';
     newGame.innerText = 'SPIN';
+    console.log(document.querySelector('#ring1'), "HELLO")
+    createSlots('#ring1');
+ 	createSlots('#ring2');
+ 	createSlots('#ring3');
     getWinner();
     render();
 }
 
+function getSeed() {
+	// generate random number smaller than 13 then floor it to settle between 0 and 12 inclusive
+	return Math.floor(Math.random()*(slotsPerReel));
+}
+
+function spinReels(timer) {
+    // Get all elements with the class 'ring'
+    const ringElements = document.querySelectorAll('.ring');
+    // Loop through each 'ring' element and set margin-top to 7px
+    ringElements.forEach(el => {el.style.marginTop = '7px'});
+	const seeds = []
+    for (var i = 1; i < 6; i++) {
+        var ringElement = document.getElementById('ring' + i);
+      
+        if (ringElement) {
+            var oldSeed = -1;
+      
+        // Checking that the old seed from the previous iteration is not the same as the current iteration;
+        // If this happens, then the reel will not spin at all
+        var oldClass = ringElement.className;
+        if (oldClass.length > 4) {
+            oldSeed = parseInt(oldClass.slice(10));
+        }
+      
+        var seed = getSeed();
+        while (oldSeed === seed) {
+            seed = getSeed();
+        }
+      
+          ringElement.style.animation = 'back-spin 1s, spin-' + seed + ' ' + (timer + i * 0.5) + 's';
+          ringElement.className = 'ring spin-' + seed;
+        } else {
+            console.error('Element with ID "ring' + i + '" not found.');
+        }
+        if ([3,9,4,10].includes(seed)) {
+            seed = 0
+        } else if ([5,11].includes(seed)) {
+            seed = 4
+        } else if ([0,6].includes(seed)) {
+            seed = 5
+        } else if ([1,7].includes(seed)) {
+            seed = 6
+        } else if ([2,8].includes(seed)) {
+            seed = 7
+        }
+        seeds.push(seed)
+    }
+    reel1 = seeds[0]
+    reel2 = seeds[1]
+    reel3 = seeds[2]
+      
+}
+
+function createSlots (ringId) {
+	var slotAngle = 360 / slotsPerReel;
+	var seed = 11;
+
+	for (var i = 0; i < slotsPerReel; i ++) {
+		var slot = document.createElement('div');
+        slot.className = 'slot';
+        
+        // Compute and assign the transform for this slot
+        slot.style.transform = 'rotateX(' + (slotAngle * i) + 'deg) translateZ(' + reelRadious + 'px)';
+
+        // Setup the number to show inside the slots; the position is randomized
+        var content = document.createElement('p');
+        content.textContent = replacementMap[(seed + i) % 6];
+        slot.appendChild(content);
+
+        // Add the slot to the row
+        const ring = document.querySelector(ringId)
+        console.log(ring, ringId);
+        ring.appendChild(slot);
+	}
+}
+
 // Function to check for matchs and handle points
 function getWinner() {
+    console.log("reels result:", reel1, reel2, reel3);
     results = null;
     if (reel1 === reel2 && reel1 === reel3 && reel2 === reel3) {
         if (reel1, reel2, reel3 === 7) {
