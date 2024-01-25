@@ -41,7 +41,7 @@ html {
   }
 
   main{
-    width: 350px;
+    /* width: 350px; */
     height: 510px;
     border: 5px goldenrod double;
     border-radius: 68px/141px;
@@ -111,8 +111,9 @@ section.reels {
 
 #reel1, #reel2, #reel3 {
     overflow: hidden;
-    height: 300px;
+    height: 225px;
     display: flex;
+    margin-top: -5px;
     justify-content: center;
     align-items: center;
     border: 5px goldenrod double;
@@ -137,6 +138,10 @@ section.reels {
 
 #reel3 {
     border-radius: 35px/0px 115px 115px 0px;
+}
+
+.slot p {
+    font-size: 70px;
 }
 
 section.console {
@@ -351,7 +356,7 @@ section.console {
         background-color: white;   
         border: 5px goldenrod double;
         width: 90%;
-        /* height: 100%; */
+        height: 300px;
         margin: auto;
         
     }
@@ -361,6 +366,10 @@ section.console {
     
     #reel3 {
         border-radius: 65px/0px 115px 115px 0px;
+    }
+
+    .slot p {
+        font-size: 120px;
     }
     
     section.console {

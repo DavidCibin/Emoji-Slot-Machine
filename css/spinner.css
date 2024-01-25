@@ -17,9 +17,9 @@
 }
 
 #rotate {
-    width: 100%;
+    width: 97%;
     display: flex;
-    gap: 20px;
+    gap: 10px;
     /* Ensure that we're in 3D space */
     transform-style: preserve-3d;
 }
@@ -52,10 +52,6 @@
     -webkit-backface-visibility: visible;
     -moz-backface-visibility: visible;
     backface-visibility: visible;
-}
-
-.slot p {
-    font-size: 120px;
 }
 
 label {
