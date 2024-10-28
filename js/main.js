@@ -51,6 +51,7 @@ document.getElementById('info').addEventListener('click', infoPayout);
 /*------Functions------*/
 //Spins the reels generating random numbers and assign each number to a predefined emoji scoreboard
 function spinClick() {
+    confetti.stop()
     // time for the first spint to stop (in seconds)
     const timer = 3;
     spinReels(timer);
